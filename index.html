@@ -21,9 +21,9 @@
   --text:    #e2e2e2;
   --muted:   #707070;
   --dim:     #3a3a3a;
-  --accent:  #f5c518;
-  --acc-bg:  rgba(245,197,24,0.10);
-  --acc-txt: #000;
+  --accent:  #769fda;
+  --acc-bg:  rgba(118,159,218,0.10);
+  --acc-txt: #fff;
   --red:     #e53935;
   --red-bg:  rgba(229,57,53,0.10);
   --green:   #4ade80;
@@ -54,7 +54,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 #screen-setup {
   height: 100vh; height: 100dvh;
   align-items: center; justify-content: center;
-  background: radial-gradient(ellipse 50% 35% at 50% -5%, rgba(245,197,24,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 50% 35% at 50% -5%, rgba(118,159,218,0.05) 0%, transparent 70%);
 }
 .setup-wrap { width: 420px; }
 .setup-logo { text-align: center; margin-bottom: 28px; }
@@ -179,9 +179,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 .ctrl-slide input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%;
   background: var(--accent); cursor: pointer; border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px rgba(245,197,24,0.5); transition: box-shadow 0.15s;
+  box-shadow: 0 0 0 1px rgba(118,159,218,0.5); transition: box-shadow 0.15s;
 }
-.ctrl-slide input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 3px rgba(245,197,24,0.25); }
+.ctrl-slide input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 3px rgba(118,159,218,0.25); }
 .ctrl-slide .sv { font-size: 12px; font-family: var(--mono); color: var(--accent); min-width: 28px; text-align: right; }
 
 .seg { display: flex; background: var(--s2); border: 1px solid var(--bd); border-radius: var(--r-sm); padding: 2px; gap: 2px; }
@@ -255,11 +255,11 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
   outline: none; resize: vertical; min-height: 60px; max-height: 240px;
   line-height: 1.55; transition: border-color 0.15s;
 }
-.prompt-box textarea:focus { border-color: rgba(245,197,24,0.35); }
+.prompt-box textarea:focus { border-color: rgba(118,159,218,0.35); }
 .prompt-box textarea::placeholder { color: var(--dim); }
 .prompt-box textarea.shake { animation: shake 0.28s ease; border-color: var(--red) !important; }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-.prompt-box.drag-over textarea { border-color: rgba(245,197,24,0.5); background: rgba(245,197,24,0.03); }
+.prompt-box.drag-over textarea { border-color: rgba(118,159,218,0.5); background: rgba(118,159,218,0.03); }
 
 .cc { position: absolute; bottom: 8px; right: 11px; font-size: 11px; color: var(--dim); font-family: var(--mono); pointer-events: none; }
 .cc.near { color: #fb923c; }
@@ -282,7 +282,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
   line-height: 1; transition: opacity 0.12s;
 }
 .upload-item-rm:hover { opacity: 0.75; }
-.upload-strip-count { font-size: 10px; color: var(--accent); background: var(--acc-bg); border: 1px solid rgba(245,197,24,0.2); border-radius: 4px; padding: 1px 7px; flex-shrink: 0; white-space: nowrap; }
+.upload-strip-count { font-size: 10px; color: var(--accent); background: var(--acc-bg); border: 1px solid rgba(118,159,218,0.2); border-radius: 4px; padding: 1px 7px; flex-shrink: 0; white-space: nowrap; }
 .upload-warn { font-size: 11px; color: #fb923c; background: rgba(251,146,60,0.07); border: 1px solid rgba(251,146,60,0.18); border-radius: var(--r-sm); padding: 6px 10px; margin-bottom: 8px; line-height: 1.4; }
 
 /* ── MODE ROW ── */
@@ -327,7 +327,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 .img-prompt { flex: 1; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: default; min-width: 0; }
 .img-tags { display: flex; gap: 4px; flex-shrink: 0; }
 .tag { background: var(--s3); border: 1px solid var(--bd); border-radius: 3px; padding: 1px 5px; font-size: 10px; color: var(--dim); font-family: var(--mono); white-space: nowrap; }
-.tag-hist { background: rgba(245,197,24,0.07); border-color: rgba(245,197,24,0.15); color: rgba(245,197,24,0.6); }
+.tag-hist { background: rgba(118,159,218,0.07); border-color: rgba(118,159,218,0.15); color: rgba(118,159,218,0.6); }
 
 .error-card { background: var(--red-bg); border: 1px solid rgba(229,57,53,0.2); border-radius: var(--r); padding: 14px 15px 12px; margin-bottom: 12px; }
 .error-title { font-size: 13px; font-weight: 600; color: #f87171; margin-bottom: 5px; }
@@ -378,6 +378,38 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 .help-sec strong { color: var(--text); font-weight: 600; }
 .help-close-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--s3); border: 1px solid var(--bd-hi); color: var(--muted); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.12s; flex-shrink: 0; }
 .help-close-btn:hover { background: var(--red); color: #fff; }
+
+/* ── TEMPLATE PANEL ── */
+.gen-row-wrap { position: relative; }
+.tmpl-panel {
+  position: absolute; bottom: calc(100% + 6px); left: 0; right: 0;
+  background: var(--s2); border: 1px solid var(--bd-hi);
+  border-radius: var(--r); overflow: hidden;
+  box-shadow: 0 -12px 32px rgba(0,0,0,0.5);
+  z-index: 20; flex-direction: column; max-height: 360px;
+}
+.tmpl-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px 7px; border-bottom: 1px solid var(--bd); flex-shrink: 0;
+}
+.tmpl-head-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+.tmpl-cats {
+  display: flex; gap: 4px; padding: 7px 8px; overflow-x: auto; flex-shrink: 0;
+  border-bottom: 1px solid var(--bd);
+}
+.tmpl-cats::-webkit-scrollbar { height: 3px; }
+.tmpl-cat-btn {
+  font-size: 11px; padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+  background: transparent; border: 1px solid var(--bd); color: var(--muted);
+  cursor: pointer; transition: all 0.12s; flex-shrink: 0;
+}
+.tmpl-cat-btn.on { background: var(--acc-bg); border-color: var(--accent); color: var(--accent); }
+.tmpl-cat-btn:not(.on):hover { background: var(--s3); color: var(--text); }
+.tmpl-list { overflow-y: auto; flex: 1; padding: 4px; }
+.tmpl-item { padding: 7px 10px; border-radius: var(--r-sm); cursor: pointer; transition: background 0.1s; }
+.tmpl-item:hover { background: var(--s3); }
+.tmpl-item-name { font-size: 12px; font-weight: 600; color: var(--text); }
+.tmpl-item-prev { font-size: 11px; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ── TOAST ── */
 .toast { position: fixed; bottom: 44px; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--s4); border: 1px solid var(--bd-hi); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--text); z-index: 700; opacity: 0; transition: opacity 0.18s, transform 0.18s; pointer-events: none; white-space: nowrap; }
@@ -508,7 +540,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         </div>
 
         <div class="pgrp" id="grp-upscale-tip" style="display:none;">
-          <div style="background:var(--acc-bg);border:1px solid rgba(245,197,24,0.2);border-radius:var(--r-sm);padding:9px 11px;">
+          <div style="background:var(--acc-bg);border:1px solid rgba(118,159,218,0.2);border-radius:var(--r-sm);padding:9px 11px;">
             <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">💡 Höhere Auflösung</div>
             <div class="param-note" style="color:var(--muted);">Gemini &amp; Imagen Fast geben ~1024 px aus. Für Druckqualität: PNG in Photoshop öffnen → <strong style="color:var(--text);">Bearbeiten → Generative Upscale</strong> (Adobe Firefly) → bis 4× ohne Qualitätsverlust.</div>
           </div>
@@ -570,11 +602,15 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         </div>
 
         <input type="file" id="file-input" accept="image/*" multiple style="display:none;">
-        <div class="gen-row">
-          <button class="btn btn-secondary" id="btn-upload" title="Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)">📎 Bilder hinzufügen</button>
-          <button class="btn btn-primary" id="btn-gen">⚡ Generieren</button>
-          <div style="flex:1"></div>
-          <button class="btn btn-ghost btn-sm" id="btn-clear" style="display:none;">Ergebnisse leeren</button>
+        <div class="gen-row-wrap">
+          <div class="tmpl-panel" id="tmpl-panel" style="display:none;"></div>
+          <div class="gen-row">
+            <button class="btn btn-secondary" id="btn-upload" title="Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)">📎 Bilder</button>
+            <button class="btn btn-secondary" id="btn-tmpl" title="Prompt-Vorlagen aus dem NanoBanana Cheatsheet — Tab springt zum nächsten Platzhalter">📋 Vorlagen</button>
+            <button class="btn btn-primary" id="btn-gen">⚡ Generieren</button>
+            <div style="flex:1"></div>
+            <button class="btn btn-ghost btn-sm" id="btn-clear" style="display:none;">Ergebnisse leeren</button>
+          </div>
         </div>
       </div>
 
@@ -734,6 +770,52 @@ const MODEL_LABEL = {
   'imagen-4.0-ultra-generate-001':   'Imagen 4 Ultra'
 };
 
+/* ── TEMPLATES ── */
+var TEMPLATES = [
+  { cat: '🏗 Allgemein', items: [
+    { name: 'Standard Architekturvisualisierung',
+      text: 'PHOTOREALISTIC ARCHITECTURAL VISUALIZATION OF A (BUILDING TYPE: e.g. RESIDENTIAL HOUSE / OFFICE TOWER / MUSEUM). (ARCHITECTURAL STYLE: e.g. BAUHAUS / MODERNIST / BRUTALIST) STYLE. (TIME OF DAY: e.g. GOLDEN HOUR / OVERCAST / NIGHT). SET IN A (ENVIRONMENT: e.g. URBAN / FOREST / WATERFRONT) SETTING. HIGHLY DETAILED, PROFESSIONAL QUALITY.' },
+    { name: 'Stil & Ästhetik erkunden',
+      text: '(BUILDING/SPACE TYPE: e.g. VILLA / LOFT / CAFÉ) IN THE STYLE OF (AESTHETIC: e.g. JAPANDI / WABI-SABI / ART DECO / SCANDINAVIAN MINIMALISM). KEY ELEMENTS: (MATERIAL 1: e.g. RAW CONCRETE), (MATERIAL 2: e.g. WARM OAK WOOD), (COLOR PALETTE: e.g. EARTHY NEUTRALS). PHOTOREALISTIC RENDER.' },
+    { name: 'Mood Board erstellen',
+      text: 'CREATE A COHESIVE MOOD BOARD FOR A (STYLE: e.g. BIOPHILIC / INDUSTRIAL / COASTAL) (SPACE: e.g. LIVING ROOM / HOTEL LOBBY / RESTAURANT) DESIGN. INCLUDE (COLOR PALETTE: e.g. WARM TERRACOTTA AND SAGE), (MATERIALS: e.g. LINEN, TRAVERTINE, RATTAN), (MOOD: e.g. CALM AND NATURAL). PROFESSIONAL INTERIOR DESIGN LAYOUT.' }
+  ]},
+  { cat: '🏠 Innenraum', items: [
+    { name: 'Raumgestaltung — Leerraum',
+      text: 'TRANSFORM THIS EMPTY ROOM INTO A FULLY DESIGNED (ROOM TYPE: e.g. LIVING ROOM / BEDROOM / KITCHEN) IN (STYLE: e.g. MINIMALIST SCANDINAVIAN / WARM MEDITERRANEAN) STYLE. ADD (FURNITURE: e.g. MODULAR SOFA, COFFEE TABLE, PENDANT LIGHT). (COLOR PALETTE: e.g. WARM WHITES AND MUTED GREENS). NATURAL LIGHTING, PHOTOREALISTIC.' },
+    { name: 'Raumgestaltung — Möbliert',
+      text: 'REDESIGN THIS FURNISHED (ROOM TYPE: e.g. LIVING ROOM / OFFICE) IN (TARGET STYLE: e.g. MID-CENTURY MODERN / JAPANDI) STYLE. REPLACE EXISTING FURNITURE WITH (NEW FURNITURE: e.g. LOW PROFILE SOFA, WALNUT SHELVING, PAPER PENDANT LAMPS). KEEP (ELEMENTS: e.g. THE ORIGINAL FLOORING AND WINDOW LAYOUT). PHOTOREALISTIC RENDER.' },
+    { name: 'Bild → Render',
+      text: 'CONVERT THIS (SKETCH / PHOTO / FLOOR PLAN) INTO A HIGH-QUALITY PHOTOREALISTIC ARCHITECTURAL RENDER. (INTERIOR / EXTERIOR) VIEW. (STYLE: e.g. CONTEMPORARY / BAUHAUS) AESTHETIC. (LIGHTING: e.g. WARM AFTERNOON SUNLIGHT). MAINTAIN ORIGINAL PROPORTIONS AND SPATIAL LAYOUT.' },
+    { name: 'Material & Textur austauschen',
+      text: 'CHANGE THE MATERIALS IN THIS INTERIOR IMAGE: REPLACE (CURRENT MATERIAL: e.g. WHITE PAINTED WALLS) WITH (NEW MATERIAL: e.g. EXPOSED BRICK). REPLACE (CURRENT FLOOR: e.g. TILE) WITH (NEW FLOOR: e.g. DARK HERRINGBONE PARQUET). KEEP ALL OTHER ELEMENTS UNCHANGED. PHOTOREALISTIC RESULT.' }
+  ]},
+  { cat: '📐 Pläne & Außen', items: [
+    { name: 'Grundriss → 3D-Render',
+      text: 'TURN THIS FLOOR PLAN INTO A PHOTOREALISTIC (INTERIOR / AERIAL) ARCHITECTURAL RENDER. (STYLE: e.g. CONTEMPORARY / INDUSTRIAL LOFT) DESIGN. (LIGHTING: e.g. BRIGHT DAYLIGHT / GOLDEN HOUR). HIGH DETAIL, PROFESSIONAL QUALITY. SHOW FURNITURE AND MATERIALS.' },
+    { name: 'Lageplan → Aerial Render',
+      text: 'TRANSFORM THIS SITE PLAN INTO A PHOTOREALISTIC AERIAL DRONE RENDER. (URBAN / SUBURBAN / RURAL) SETTING. SEASON: (SEASON: e.g. SUMMER / AUTUMN). TIME OF DAY: (TIME: e.g. MIDDAY / DUSK). SURROUND WITH (LANDSCAPE: e.g. MATURE TREES AND PAVED PLAZAS). BIRDS-EYE PERSPECTIVE.' },
+    { name: 'Bepflanzung & Außenraum',
+      text: 'REDESIGN THE LANDSCAPE OF THIS BUILDING. ADD (PLANTING: e.g. TALL BIRCH TREES, ORNAMENTAL GRASSES, FLOWER BEDS). (LANDSCAPE STYLE: e.g. CONTEMPORARY FORMAL / NATURALISTIC) DESIGN. SEASON: (SEASON). WEATHER: (WEATHER: e.g. BRIGHT SUNSHINE / OVERCAST). PHOTOREALISTIC RENDER.' },
+    { name: 'Umbau / Fassaden-Renovation',
+      text: 'SHOW WHAT THIS (FACADE / EXTERIOR / ROOM) LOOKS LIKE AFTER A RENOVATION IN (TARGET STYLE: e.g. MODERN SCANDINAVIAN). KEY CHANGES: (CHANGES: e.g. NEW DARK METAL CLADDING, LARGE WINDOWS, PLANTED ROOF). KEEP ORIGINAL (ELEMENTS: e.g. STRUCTURAL OUTLINE AND ENTRY). PHOTOREALISTIC VISUALIZATION.' }
+  ]},
+  { cat: '✂️ Spezial', items: [
+    { name: 'Entourage hinzufügen',
+      text: 'ADD (ENTOURAGE: e.g. PEOPLE WALKING / PARKED CARS / MATURE TREES / OUTDOOR FURNITURE) TO THIS ARCHITECTURAL IMAGE. STYLE: REALISTIC, ARCHITECTURALLY CORRECT SCALE. INTEGRATE NATURALLY INTO THE EXISTING SCENE, MAINTAIN ORIGINAL LIGHTING AND SHADOWS.' },
+    { name: 'Cutout für Collage',
+      text: 'CREATE A HIGH-QUALITY ARCHITECTURAL CUTOUT OF A (SUBJECT: e.g. STANDING PERSON / TREE IN LEAF / PARKED CAR) FOR COLLAGE USE. STYLE: (REALISTIC / WATERCOLOR / INK LINE-DRAWING). PURE WHITE BACKGROUND, CLEAN EDGES. ARCHITECTURAL SCALE AND PROPORTION.' },
+    { name: 'Perspektive wechseln',
+      text: 'SHOW THIS (BUILDING / SPACE / ROOM) FROM A (PERSPECTIVE: e.g. BIRD\'S EYE AERIAL / WORM\'S EYE / ISOMETRIC / STREET LEVEL) PERSPECTIVE. MAINTAIN THE SAME DESIGN, MATERIALS AND ATMOSPHERE. (ADDITIONAL: e.g. LATE AFTERNOON SUN, LONG SHADOWS). PHOTOREALISTIC RENDER.' },
+    { name: 'Stil übertragen',
+      text: 'TRANSFORM THE ARCHITECTURAL STYLE OF THIS IMAGE TO (TARGET STYLE: e.g. BRUTALIST / BIOPHILIC / DECONSTRUCTIVIST). MAINTAIN THE SAME SPATIAL COMPOSITION AND PROPORTIONS. KEY CHANGES: (MATERIAL 1: e.g. EXPOSED CONCRETE), (MATERIAL 2: e.g. CORTEN STEEL), (CHARACTERISTIC: e.g. CANTILEVERED VOLUMES). PHOTOREALISTIC.' },
+    { name: '3D-Gebäude aus Skizze',
+      text: 'TURN THIS (SKETCH / CONCEPT DRAWING / PHOTO) INTO A DETAILED 3D PHOTOREALISTIC ARCHITECTURAL VISUALIZATION. (EXTERIOR AERIAL / STREET LEVEL) VIEW. STYLE: (ARCHITECTURAL STYLE: e.g. CONTEMPORARY RESIDENTIAL). ENVIRONMENT: (SETTING: e.g. WOODED HILLSIDE). SEASON: (SEASON). HIGH DETAIL, PROFESSIONAL RENDER.' },
+    { name: 'Konstruktion Timelapse (Still)',
+      text: 'VISUALIZE THE CONSTRUCTION PROGRESS OF A (BUILDING TYPE) FROM (START STAGE: e.g. CONCRETE FOUNDATION / STEEL FRAME) TO (END STAGE: e.g. COMPLETED FACADE). (ARCHITECTURAL STYLE). (AERIAL / EYE-LEVEL) VIEW. PHOTOREALISTIC, CONSTRUCTION SITE ATMOSPHERE WITH MACHINERY AND WORKERS.' }
+  ]}
+];
+
 /* ── STATE ── */
 var S = {
   key: '', name: 'Anonym',
@@ -805,6 +887,7 @@ function launchApp(key) {
   initParams();
   initPrompt();
   initUpload();
+  initTemplates();
   initUIEvents();
   initHelp();
   initResize();
@@ -1002,6 +1085,24 @@ function initPrompt() {
   });
   ta.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); generate(); }
+    if (e.key === 'Tab') {
+      var text = ta.value;
+      var from = ta.selectionEnd;
+      var rest = text.slice(from);
+      var m = rest.match(/\([^)]+\)/);
+      if (m) {
+        e.preventDefault();
+        var s = from + rest.indexOf(m[0]);
+        ta.setSelectionRange(s, s + m[0].length);
+      } else {
+        var wrap = text.match(/\([^)]+\)/);
+        if (wrap) {
+          e.preventDefault();
+          var s = text.indexOf(wrap[0]);
+          ta.setSelectionRange(s, s + wrap[0].length);
+        }
+      }
+    }
   });
   ta.focus();
 }
@@ -1329,6 +1430,76 @@ function openLightbox(url, prompt) {
   q('#lightbox').classList.add('show');
 }
 function closeLightbox() { q('#lightbox').classList.remove('show'); }
+
+/* ── TEMPLATES ── */
+function initTemplates() {
+  var panel = q('#tmpl-panel');
+  var catsHtml = TEMPLATES.map(function(cat, i) {
+    return '<button class="tmpl-cat-btn' + (i === 0 ? ' on' : '') + '" data-i="' + i + '">' + esc(cat.cat) + '</button>';
+  }).join('');
+  panel.innerHTML =
+    '<div class="tmpl-head">' +
+      '<span class="tmpl-head-title">📋 Prompt-Vorlagen</span>' +
+      '<button class="btn btn-ghost tmpl-close-x" style="padding:3px 8px;font-size:12px;line-height:1;">✕</button>' +
+    '</div>' +
+    '<div class="tmpl-cats" id="tmpl-cats">' + catsHtml + '</div>' +
+    '<div class="tmpl-list" id="tmpl-list"></div>';
+  renderTmplItems(0);
+  q('#tmpl-cats').addEventListener('click', function(e) {
+    var btn = e.target.closest('.tmpl-cat-btn');
+    if (!btn) return;
+    q('#tmpl-cats').querySelectorAll('.tmpl-cat-btn').forEach(function(b) { b.classList.remove('on'); });
+    btn.classList.add('on');
+    renderTmplItems(parseInt(btn.dataset.i));
+  });
+  q('#tmpl-list').addEventListener('click', function(e) {
+    var item = e.target.closest('.tmpl-item');
+    if (!item) return;
+    insertTemplate(TEMPLATES[parseInt(item.dataset.cat)].items[parseInt(item.dataset.idx)].text);
+  });
+  panel.querySelector('.tmpl-close-x').addEventListener('click', closeTmplPanel);
+  q('#btn-tmpl').addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+  });
+  document.addEventListener('click', function(e) {
+    if (panel.style.display !== 'none' && !panel.contains(e.target) && e.target.id !== 'btn-tmpl' && !q('#btn-tmpl').contains(e.target)) {
+      closeTmplPanel();
+    }
+  });
+}
+
+function renderTmplItems(catIdx) {
+  var list = q('#tmpl-list');
+  list.innerHTML = TEMPLATES[catIdx].items.map(function(item, idx) {
+    var prev = item.text.replace(/\([^)]+\)/g, function(m) {
+      var label = m.slice(1, m.indexOf(':') > 0 ? m.indexOf(':') : m.length - 1);
+      return '(' + label.trim() + ')';
+    });
+    return '<div class="tmpl-item" data-cat="' + catIdx + '" data-idx="' + idx + '">' +
+      '<div class="tmpl-item-name">' + esc(item.name) + '</div>' +
+      '<div class="tmpl-item-prev">' + esc(prev.slice(0, 80) + (prev.length > 80 ? '…' : '')) + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function closeTmplPanel() { q('#tmpl-panel').style.display = 'none'; }
+
+function insertTemplate(text) {
+  var ta = q('#prompt');
+  ta.value = text;
+  ta.dispatchEvent(new Event('input'));
+  var m = text.match(/\([^)]+\)/);
+  if (m) {
+    var s = text.indexOf(m[0]);
+    ta.setSelectionRange(s, s + m[0].length);
+  } else {
+    ta.setSelectionRange(text.length, text.length);
+  }
+  ta.focus();
+  closeTmplPanel();
+  showToast('Tab → nächsten Platzhalter auswählen');
+}
 
 /* ── HELP ── */
 function initHelp() {
