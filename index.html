@@ -396,7 +396,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
   background: var(--s2); border: 1px solid var(--bd-hi);
   border-radius: var(--r); overflow: hidden;
   box-shadow: 0 -12px 32px rgba(0,0,0,0.5);
-  z-index: 20; flex-direction: column; max-height: 360px;
+  z-index: 20; flex-direction: column; max-height: min(340px, 44vh);
 }
 .tmpl-head {
   display: flex; align-items: center; justify-content: space-between;
@@ -439,12 +439,18 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
     </div>
     <div class="setup-card">
       <h2>🔑 API-Key eingeben</h2>
-      <p class="desc">Nano Banana Studio nutzt die Google Gemini API zur Bildgenerierung. Einen gültigen Key bekommst du vom Workshop-Leiter — ein eigener Google-Account ist nicht nötig.</p>
+      <p class="desc">Nano Banana Studio ist kostenlos nutzbar — du brauchst nur einen eigenen <strong>Google Gemini API-Key</strong>. Den erstellst du in weniger als einer Minute, ganz ohne Abo.</p>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:14px;font-size:12px;line-height:1.8;color:var(--muted);">
+        <strong style="color:var(--text);display:block;margin-bottom:5px;">So bekommst du deinen API-Key:</strong>
+        <span style="color:var(--text);">1.</span> <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">aistudio.google.com/apikey</a> öffnen<br>
+        <span style="color:var(--text);">2.</span> Mit Google-Account anmelden &amp; <em>„Create API key"</em> klicken<br>
+        <span style="color:var(--text);">3.</span> Key kopieren und unten einfügen — fertig.
+      </div>
       <div class="warn-box">
         <span>⚠️</span>
-        <span><strong>Wichtig:</strong> Diesen Key nie weitergeben — nicht an Personen, nicht in öffentlichen Projekten. Er wird nur im aktuellen Tab gespeichert und beim Schließen automatisch gelöscht.</span>
+        <span><strong>Sicherheit:</strong> Diesen Key nie weitergeben — nicht an Personen, nicht in öffentlichen Projekten. Er wird nur im aktuellen Browser-Tab gespeichert und beim Schließen automatisch gelöscht.</span>
       </div>
-      <label class="field-lbl" for="key-input">API-Key</label>
+      <label class="field-lbl" for="key-input">API-Key <span style="color:var(--red);font-weight:700;">*</span></label>
       <div class="input-row">
         <input type="password" id="key-input" placeholder="AIzaSy…" autocomplete="off" spellcheck="false">
         <div class="field-err" id="key-err">Muss mit „AIza" beginnen und mindestens 30 Zeichen lang sein.</div>
@@ -512,9 +518,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="pgrp" id="grp-sysctx">
           <div class="pgrp-lbl">System-Kontext</div>
           <div class="seg" id="seg-sysctx">
-            <button class="seg-btn on" data-v="off">Aus</button>
-            <button class="seg-btn" data-v="expert">Expert</button>
-            <button class="seg-btn" data-v="grey">Graustufen</button>
+            <button class="seg-btn on" data-v="off" title="Kein System-Kontext — volle Freiheit, kein Hintergrundprompt">Aus</button>
+            <button class="seg-btn" data-v="expert" title="Photorealistisch · geometrisch präzise · professionelle Architekturbeleuchtung und -komposition">Expert</button>
+            <button class="seg-btn" data-v="grey" title="Ausschließlich Schwarz-Weiß · starke Kontraste · keine Farbe — MemoFix-Stil">Graustufen</button>
           </div>
           <p class="param-note" id="sysctx-note" style="margin-top:5px;"></p>
         </div>
@@ -522,10 +528,10 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="pgrp" id="grp-think">
           <div class="pgrp-lbl">Thinking-Level <span style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— mehr = besser &amp; langsamer</span></div>
           <div class="seg" id="seg-think">
-            <button class="seg-btn on" data-v="0">Aus</button>
-            <button class="seg-btn" data-v="1024">Niedrig</button>
-            <button class="seg-btn" data-v="8192">Mittel</button>
-            <button class="seg-btn" data-v="24576">Hoch</button>
+            <button class="seg-btn on" data-v="0" title="Kein Thinking — schnell, günstig">Aus</button>
+            <button class="seg-btn" data-v="1024" title="1024 Thinking-Tokens — leicht besser, minimal langsamer">Niedrig</button>
+            <button class="seg-btn" data-v="8192" title="8192 Thinking-Tokens — deutlich bessere Bildqualität und Komposition">Mittel</button>
+            <button class="seg-btn" data-v="24576" title="24576 Thinking-Tokens — maximale Qualität, deutlich langsamer und teurer">Hoch</button>
           </div>
         </div>
 
@@ -553,9 +559,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="pgrp" id="grp-imagesize">
           <div class="pgrp-lbl">Auflösung</div>
           <div class="seg" id="seg-imagesize">
-            <button class="seg-btn on" data-v="1K">1K</button>
-            <button class="seg-btn" data-v="2K">2K</button>
-            <button class="seg-btn" data-v="4K" id="btn-4k-opt">4K</button>
+            <button class="seg-btn on" data-v="1K" title="ca. 1024 × 1024 px — Standard">1K</button>
+            <button class="seg-btn" data-v="2K" title="ca. 2048 × 2048 px — gut für Druckausgabe">2K</button>
+            <button class="seg-btn" data-v="4K" id="btn-4k-opt" title="ca. 4096 × 4096 px — nur Gemini, maximale Detailgenauigkeit">4K</button>
           </div>
           <p class="param-note" id="imagesize-note"></p>
         </div>
@@ -629,8 +635,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 
         <div class="mode-row" id="mode-row" style="display:none;">
           <div class="seg" id="seg-mode">
-            <button class="seg-btn on" data-v="new">✦ Neue Serie</button>
-            <button class="seg-btn" data-v="continue">↺ Aufbauen</button>
+            <button class="seg-btn on" data-v="new" title="Jeder Prompt startet frisch — kein Kontext aus vorherigen Generierungen">✦ Neue Serie</button>
+            <button class="seg-btn" data-v="continue" title="Baut auf dem letzten Bild auf — ideal für schrittweise Überarbeitungen">↺ Aufbauen</button>
           </div>
           <span class="chat-depth" id="chat-depth" style="display:none;"></span>
         </div>
@@ -642,7 +648,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
             <button class="btn btn-secondary" id="btn-upload" title="Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)">📎 Bilder</button>
             <button class="btn btn-secondary" id="btn-tmpl" title="Prompt-Vorlagen aus dem NanoBanana Cheatsheet — Tab springt zum nächsten Platzhalter">📋 Vorlagen</button>
             <button class="btn btn-secondary" id="btn-improve" title="Prompt mit KI automatisch verbessern und ausformulieren (Gemini)">✨</button>
-            <button class="btn btn-primary" id="btn-gen">⚡ Generieren</button>
+            <button class="btn btn-primary" id="btn-gen" title="Bild generieren (Strg+Enter)">⚡ Generieren</button>
             <div style="flex:1"></div>
             <button class="btn btn-ghost btn-sm" id="btn-clear" style="display:none;">Ergebnisse leeren</button>
           </div>
@@ -711,7 +717,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Schnellstart</h3>
         <ul>
           <li><strong>Prompt eingeben</strong> — beschreibe dein Bild auf Deutsch oder Englisch (Englisch für Stilbegriffe empfohlen)</li>
-          <li><strong>📋 Vorlagen</strong> — 18 Architektur- &amp; Innenarchitektur-Prompts. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten (Platzhalter)</li>
+          <li><strong>📋 Vorlagen</strong> — 19 Architektur- &amp; Innenarchitektur-Prompts. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
           <li><strong>⚡ Generieren</strong> klicken (oder <strong>Strg+Enter</strong>)</li>
           <li>Bild anklicken → Vollbild, <strong>↓ PNG</strong> zum Herunterladen</li>
           <li>Rechtsklick auf ein Bild → sofortiger Download</li>
@@ -824,47 +830,49 @@ var STYLE_CHIPS = [
 var TEMPLATES = [
   { cat: '🏠 Innenarchitektur', items: [
     { name: 'Leeren Raum einrichten',
-      text: '(Raumtyp: z.B. minimalistisches Wohnzimmer / offenes Büro / Loft) mit (Raumbesonderheiten: z.B. raumhoher Verglasung, freiliegender Betondecke, offenem Grundriss).\nMaterialität: (Oberflächen: z.B. gebürstete Eichenpaneele, geschliffener Sichtbeton, geriffeltes Glas, Natursteinboden).\nLicht & Stimmung: (z.B. tiefstehende Nachmittagssonne im Sommer, weicher Schattenwurf, warme und ruhige Atmosphäre).\nKamera: Architekturfotografie, (Brennweite: z.B. Weitwinkel 24mm) auf Augenhöhe, (Perspektive: z.B. Zentralperspektive / Übereckperspektive), vertikale Linien streng gerade. Photorealistisch.' },
+      text: '[ROOM TYPE: e.g. minimalist living room / open-plan office / loft apartment] with [FEATURES: e.g. floor-to-ceiling glazing, exposed concrete ceiling, open layout].\nMateriality: [SURFACES: e.g. brushed oak panels, polished fair-faced concrete, ribbed glass, natural stone floor].\nLight & mood: [LIGHTING: e.g. low afternoon sun in summer, soft shadow play, warm quiet atmosphere].\nCamera: architectural photography, [FOCAL LENGTH: e.g. wide-angle 24mm] at eye level, [PERSPECTIVE: e.g. one-point central / two-point corner], vertical lines perfectly straight. Photorealistic.' },
     { name: 'Weißmodell → Eingerichteter Raum',
-      text: 'Transform this white/grey architectural model into a fully furnished, photorealistic interior render.\nStyle: (Einrichtungsstil: z.B. Japandi / Scandinavian minimalism / contemporary luxury / warm industrial).\nMaterials & furniture: (Materialien & Möbel: z.B. low-profile linen sofa, smoked oak shelving, polished concrete floor, paper pendant lamp).\nLighting: (Licht: z.B. diffuse daylight from large windows, warm accent lighting).\nCamera: (Perspektive: z.B. wide-angle 24mm at eye level, one-point perspective, vertical lines straight).\nDo not change the geometry or proportions of the architectural model.' },
+      text: 'Transform this white/grey architectural model into a fully furnished, photorealistic interior render.\nStyle: [INTERIOR STYLE: e.g. Japandi / Scandinavian minimalism / contemporary luxury / warm industrial].\nMaterials & furniture: [MATERIALS & FURNITURE: e.g. low-profile linen sofa, smoked oak shelving, polished concrete floor, paper pendant lamp].\nLighting: [LIGHTING: e.g. diffuse daylight from large windows, warm accent lighting].\nCamera: [PERSPECTIVE: e.g. wide-angle 24mm at eye level, one-point perspective, vertical lines straight].\nDo not change the geometry or proportions of the architectural model.' },
     { name: 'Materialien & Oberflächen tauschen',
-      text: 'Change the materials and surface finishes in this image only.\nReplace (aktuelles Material 1: z.B. white painted walls) with (neues Material 1: z.B. raw fair-faced concrete).\nReplace (aktuelles Material 2: z.B. light laminate floor) with (neues Material 2: z.B. large-format honed travertine tiles).\nReplace (aktuelles Material 3: z.B. standard ceiling) with (neues Material 3: z.B. exposed timber beams).\nDo not alter the geometry, floor plan, spatial proportions, furniture placement, lighting, or camera angle in any way. Only change materials and surface finishes.' },
+      text: 'Change the materials and surface finishes in this image only.\nReplace [MATERIAL FROM: e.g. white painted walls] with [MATERIAL TO: e.g. raw fair-faced concrete].\nReplace [MATERIAL FROM: e.g. light laminate floor] with [MATERIAL TO: e.g. large-format honed travertine tiles].\nReplace [MATERIAL FROM: e.g. standard ceiling] with [MATERIAL TO: e.g. exposed timber beams].\nDo not alter the geometry, floor plan, spatial proportions, furniture placement, lighting, or camera angle in any way. Only change materials and surface finishes.' },
     { name: 'Möblierung ersetzen',
-      text: 'Replace the furniture and decor in this interior image with a new (Einrichtungsstil: z.B. mid-century modern / minimalist / eclectic) style.\nNew furniture: (neue Möblierung: z.B. low walnut sideboard, curved velvet sofa in deep green, brass pendant lights, woven area rug).\nKeep the architectural structure, walls, floors, ceiling, windows, and all fixed elements completely unchanged.\nMaintain the original lighting and camera perspective.' },
+      text: 'Replace the furniture and decor in this interior image with a new [INTERIOR STYLE: e.g. mid-century modern / minimalist / eclectic] style.\nNew furniture: [NEW FURNITURE: e.g. low walnut sideboard, curved velvet sofa in deep green, brass pendant lights, woven area rug].\nKeep the architectural structure, walls, floors, ceiling, windows, and all fixed elements completely unchanged.\nMaintain the original lighting and camera perspective.' },
     { name: 'Kamera & Perspektive setzen',
-      text: 'Render this (Raum: z.B. living room / office / dining area) from the following camera position:\nPerspective: (Perspektive: z.B. one-point central perspective facing the main wall / two-point corner perspective from front-left).\nCamera height: (Kamerahöhe: z.B. eye level at 1.60m / low angle at 0.80m / elevated at 2.50m).\nFocal length: (Brennweite: z.B. wide-angle 24mm / standard 35mm / slight tele 50mm).\nStyle: architectural photography, vertical lines perfectly straight, no lens distortion, natural daylight.\nDo not change anything about the architecture, materials, or interior — only the camera position.' },
+      text: 'Render this [ROOM: e.g. living room / office / dining area] from the following camera position:\nPerspective: [PERSPECTIVE: e.g. one-point central perspective facing the main wall / two-point corner perspective].\nCamera height: [CAMERA HEIGHT: e.g. eye level at 1.60m / low angle at 0.80m / elevated at 2.50m].\nFocal length: [FOCAL LENGTH: e.g. wide-angle 24mm / standard 35mm / slight tele 50mm].\nStyle: architectural photography, vertical lines perfectly straight, no lens distortion, natural daylight.\nDo not change anything about the architecture, materials, or interior — only the camera position.' },
     { name: 'Licht & Stimmung wechseln',
-      text: 'Change only the lighting and atmosphere in this interior image.\nNew lighting: (Lichtstimmung: z.B. warm evening light with indirect wall sconces / bright overcast midday / golden hour low sun casting long shadows / dramatic artificial night lighting).\nSeason / time of day: (z.B. summer afternoon / winter dusk / late evening).\nDo not alter the geometry, materials, furniture, or camera angle in any way. Only lighting and mood should change.' }
+      text: 'Change only the lighting and atmosphere in this interior image.\nNew lighting: [LIGHTING: e.g. warm evening light with indirect wall sconces / bright overcast midday / golden hour low sun casting long shadows].\nSeason / time of day: [SEASON: e.g. summer afternoon / winter dusk / late evening].\nDo not alter the geometry, materials, furniture, or camera angle in any way. Only lighting and mood should change.' }
   ]},
   { cat: '🏗 Architektur & Außen', items: [
     { name: 'Neubau aus Skizze / Konzept',
-      text: 'Transform this (Skizze / Grundriss / Konzeptzeichnung) into a photorealistic architectural render.\nBuilding type: (Gebäudetyp: z.B. detached house / apartment building / cultural centre / office pavilion).\nStyle: (Architekturstil: z.B. contemporary minimalist / Bauhaus / organic / brutalist).\nFacade materials: (Materialien: z.B. fair-faced concrete, dark aluminium frames, weathered oak, oxidized copper cladding).\nSetting: (Umgebung: z.B. urban street / wooded hillside / open flat landscape).\nTime of day: (Tageszeit: z.B. late afternoon golden hour / bright overcast).\nCamera: (Perspektive: z.B. street-level two-point perspective, wide-angle 28mm).' },
+      text: 'Transform this [DRAWING: e.g. sketch / floor plan / concept drawing] into a photorealistic architectural render.\nBuilding type: [BUILDING TYPE: e.g. detached house / apartment building / cultural centre / office pavilion].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary minimalist / Bauhaus / organic / brutalist].\nFacade materials: [MATERIALS: e.g. fair-faced concrete, dark aluminium frames, weathered oak, oxidized copper cladding].\nSetting: [SETTING: e.g. urban street / wooded hillside / open flat landscape].\nTime of day: [TIME OF DAY: e.g. late afternoon golden hour / bright overcast].\nCamera: [PERSPECTIVE: e.g. street-level two-point perspective, wide-angle 28mm].' },
     { name: 'Fassade überarbeiten',
-      text: 'Change the facade materials and cladding of this building only.\nReplace (aktuelle Fassade: z.B. white render) with (neue Fassade: z.B. dark Corten steel panels with horizontal ribbing).\nReplace (aktuelles Detail: z.B. standard windows) with (neues Detail: z.B. floor-to-ceiling black aluminium framed glazing).\nDo not alter the building geometry, volume, floor plan, openings, or proportions in any way. Do not change the landscape, surroundings, or sky.' },
+      text: 'Change the facade materials and cladding of this building only.\nReplace [FACADE FROM: e.g. white render] with [FACADE TO: e.g. dark Corten steel panels with horizontal ribbing].\nReplace [DETAIL FROM: e.g. standard windows] with [DETAIL TO: e.g. floor-to-ceiling black aluminium framed glazing].\nDo not alter the building geometry, volume, floor plan, openings, or proportions in any way. Do not change the landscape, surroundings, or sky.' },
     { name: 'Anderen Winkel / Blickrichtung',
-      text: 'Generate a view of this (Gebäude: z.B. house / apartment block / pavilion) from (neue Blickrichtung: z.B. the front-left corner / a bird\'s eye perspective / street level looking up).\nKeep everything about the building and its surroundings exactly the same — do not change anything about the architecture, materials, landscape, or lighting. Only the camera position and viewing angle should change.' },
+      text: 'Generate a view of this [BUILDING: e.g. house / apartment block / pavilion] from [VIEW DIRECTION: e.g. the front-left corner / a bird\'s eye perspective / street level looking up].\nKeep everything about the building and its surroundings exactly the same — do not change anything about the architecture, materials, landscape, or lighting. Only the camera position and viewing angle should change.' },
     { name: 'Weißmodell → Fassadenrender',
-      text: 'Transform this white/grey architectural massing model into a photorealistic exterior render.\nStyle: (Architekturstil: z.B. Scandinavian minimalism / raw industrial / warm Mediterranean).\nFacade materials: (Fassadenmaterialien: z.B. pale brick, blackened timber cladding, large glazed surfaces, green planted roof).\nLandscape: (Außenraum: z.B. simple courtyard with ornamental grasses and gravel / mature urban street trees).\nTime of day: (Tageszeit: z.B. overcast bright day / warm late afternoon golden hour).\nDo not change the geometry or proportions of the model.' },
+      text: 'Transform this white/grey architectural massing model into a photorealistic exterior render.\nStyle: [ARCHITECTURAL STYLE: e.g. Scandinavian minimalism / raw industrial / warm Mediterranean].\nFacade materials: [FACADE MATERIALS: e.g. pale brick, blackened timber cladding, large glazed surfaces, green planted roof].\nLandscape: [OUTDOOR SPACE: e.g. simple courtyard with ornamental grasses and gravel / mature urban street trees].\nTime of day: [TIME OF DAY: e.g. overcast bright day / warm late afternoon golden hour].\nDo not change the geometry or proportions of the model.' },
     { name: 'Rohbauphase / Reverse Engineering',
-      text: 'Generate a version of this image showing the building during shell construction phase.\nConstruction stage: (Bauphase: z.B. concrete foundation and rising walls / steel frame structure / masonry shell without windows).\nShow construction machinery, building materials, and scaffolding scattered around the site.\nThe surroundings, trees, and landscape should remain the same as in the original image.\nWeather: (Wetter: z.B. overcast and rainy / bright working day with blue sky).' },
+      text: 'Generate a version of this image showing the building during shell construction phase.\nConstruction stage: [CONSTRUCTION STAGE: e.g. concrete foundation and rising walls / steel frame structure / masonry shell without windows].\nShow construction machinery, building materials, and scaffolding scattered around the site.\nThe surroundings, trees, and landscape should remain the same as in the original image.\nWeather: [WEATHER: e.g. overcast and rainy / bright working day with blue sky].' },
     { name: 'Jahreszeit & Wetter wechseln',
-      text: 'Change only the season, weather, and sky in this image.\nNew condition: (Jahreszeit & Wetter: z.B. winter with snow on the ground, bare trees, low cold sun / summer with lush foliage, deep blue sky, hard shadows / autumn with warm coloured leaves, overcast soft light).\nDo not alter the building, architecture, materials, or landscape structure in any way. Only seasonal vegetation, sky, weather effects, and ground covering should change.' }
+      text: 'Change only the season, weather, and sky in this image.\nNew condition: [SEASON & WEATHER: e.g. winter with snow on the ground, bare trees, low cold sun / summer with lush foliage, deep blue sky, hard shadows / autumn with warm coloured leaves, overcast soft light].\nDo not alter the building, architecture, materials, or landscape structure in any way. Only seasonal vegetation, sky, weather effects, and ground covering should change.' }
   ]},
   { cat: '🎨 Stimmung & Stil', items: [
     { name: 'Architekturstil übertragen',
-      text: 'Transform the architectural and interior style of this image to (Zielstil: z.B. Japandi / Wabi-Sabi / Art Deco / Bauhaus / Tropical Modernism / Nordic brutalism).\nKey characteristics to apply: (Stilmerkmale: z.B. natural materials, muted earth tones, clean horizontal lines, integration of indoor plants).\nMaintain the same spatial composition, room layout, proportions, and camera angle unchanged.' },
+      text: 'Transform the architectural and interior style of this image to [TARGET STYLE: e.g. Japandi / Wabi-Sabi / Art Deco / Bauhaus / Tropical Modernism / Nordic brutalism].\nKey characteristics to apply: [STYLE FEATURES: e.g. natural materials, muted earth tones, clean horizontal lines, integration of indoor plants].\nMaintain the same spatial composition, room layout, proportions, and camera angle unchanged.' },
     { name: 'Ausstellungsstand / Showroom',
-      text: 'Create a photorealistic image of a (Nutzungsart: z.B. trade show booth / brand showroom / retail space) for (Marke / Thema: z.B. a furniture brand / architecture office / tech company).\nStyle: (Stil: z.B. Scandinavian minimalist / raw industrial / high-end luxury).\nPrimary materials and colours: (Materialien & Farben: z.B. blackened steel, light oak, matte white surfaces, brand colour accents).\nKey spatial elements: (Raumelemente: z.B. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting).\nSetting: (Umgebung: z.B. dark trade show hall with polished concrete floor / bright white gallery space).\nInclude (Personen: z.B. visitors and staff naturally interacting / no people).' },
+      text: 'Create a photorealistic image of a [USE TYPE: e.g. trade show booth / brand showroom / retail space] for [BRAND / THEME: e.g. a furniture brand / architecture office / tech company].\nStyle: [STYLE: e.g. Scandinavian minimalist / raw industrial / high-end luxury].\nPrimary materials and colours: [MATERIALS & COLOURS: e.g. blackened steel, light oak, matte white surfaces, brand colour accents].\nKey spatial elements: [SPATIAL ELEMENTS: e.g. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting].\nSetting: [SETTING: e.g. dark trade show hall with polished concrete floor / bright white gallery space].\nInclude [PEOPLE: e.g. visitors and staff naturally interacting / no people].' },
     { name: 'Mood Board',
-      text: 'Create a cohesive interior design mood board for a (Raumtyp: z.B. private apartment / boutique hotel lobby / high-end restaurant).\nStyle direction: (Stilrichtung: z.B. warm minimalism / eclectic luxury / biophilic / industrial).\nColour palette: (Farbpalette: z.B. warm sand, muted sage, deep charcoal, soft terracotta accents).\nMaterials and textures: (Materialien: z.B. linen, honed marble, smoked oak, hand-woven rattan, brushed brass).\nMood: (Atmosphäre: z.B. calm and restorative / vibrant and layered / timeless and understated).\nProfessional layout, clean composition.' }
+      text: 'Create a cohesive interior design mood board for a [ROOM TYPE: e.g. private apartment / boutique hotel lobby / high-end restaurant].\nStyle direction: [STYLE DIRECTION: e.g. warm minimalism / eclectic luxury / biophilic / industrial].\nColour palette: [COLOUR PALETTE: e.g. warm sand, muted sage, deep charcoal, soft terracotta accents].\nMaterials and textures: [MATERIALS: e.g. linen, honed marble, smoked oak, hand-woven rattan, brushed brass].\nMood: [ATMOSPHERE: e.g. calm and restorative / vibrant and layered / timeless and understated].\nProfessional layout, clean composition.' }
   ]},
   { cat: '✂️ Details & Collage', items: [
     { name: 'Entourage hinzufügen',
-      text: 'Add (Entourage: z.B. people walking and sitting / parked cars and cyclists / mature trees and planted borders / outdoor furniture and umbrellas) to this architectural image.\nPhotorealistic, architecturally correct scale and proportion.\nIntegrate naturally into the existing scene — maintain the original lighting, shadows, materials, and camera perspective without any changes.' },
+      text: 'Add [ENTOURAGE: e.g. people walking and sitting / parked cars and cyclists / mature trees and planted borders / outdoor furniture and umbrellas] to this architectural image.\nPhotorealistic, architecturally correct scale and proportion.\nIntegrate naturally into the existing scene — maintain the original lighting, shadows, materials, and camera perspective without any changes.' },
     { name: 'Cutout für Architekturcollage',
-      text: 'Create a high-quality architectural cutout of (Motiv: z.B. a standing person in casual clothing / a mature tree in full leaf / a parked car, side view / an indoor plant in a ceramic pot).\nStyle: (Darstellungsart: z.B. photorealistic / architectural watercolour / black ink line drawing).\nBackground: pure white, clean edges, suitable for collage use.\nArchitecturally correct scale and proportions.' },
+      text: 'Create a high-quality architectural cutout of [SUBJECT: e.g. a standing person in casual clothing / a mature tree in full leaf / a parked car, side view / an indoor plant in a ceramic pot].\nStyle: [RENDERING STYLE: e.g. photorealistic / architectural watercolour / black ink line drawing].\nBackground: pure white, clean edges, suitable for collage use.\nArchitecturally correct scale and proportions.' },
+    { name: 'Materialcollage erstellen',
+      text: 'Create a photorealistic material sample board / mood board collage.\nMaterials to include: [MATERIAL 1: e.g. honed Carrara marble slab], [MATERIAL 2: e.g. brushed brass sheet], [MATERIAL 3: e.g. smoked oak veneer], [MATERIAL 4: e.g. raw concrete panel], [MATERIAL 5: e.g. woven natural linen fabric].\nArrangement: [ARRANGEMENT: e.g. overlapping samples at different angles / clean flat-lay grid / section-style stacked layout].\nBackground: [BACKGROUND: e.g. pure white / warm grey linen / dark slate].\nStyle: [RENDERING STYLE: e.g. photorealistic studio photography / architectural rendering / editorial flat-lay].\nOptional: add a small colour swatch or material label beneath each sample.' },
     { name: 'Grundriss / Lageplan → Render',
-      text: 'Transform this (Grundriss / Lageplan / Schnittzeichnung) into a photorealistic architectural render.\nView: (Ansicht: z.B. interior perspective / aerial bird\'s eye view / street-level exterior).\nStyle: (Architekturstil: z.B. contemporary residential / warm Scandinavian / commercial modern).\nMaterials: (Materialien: z.B. concrete, glass, timber, planted green surfaces).\nTime of day: (Tageszeit: z.B. bright daylight / late afternoon golden light).\nCamera: (Perspektive: z.B. wide-angle 28mm at eye level / aerial drone view, straight down).' }
+      text: 'Transform this [DRAWING: e.g. floor plan / site plan / section drawing] into a photorealistic architectural render.\nView: [VIEW: e.g. interior perspective / aerial bird\'s eye view / street-level exterior].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary residential / warm Scandinavian / commercial modern].\nMaterials: [MATERIALS: e.g. concrete, glass, timber, planted green surfaces].\nTime of day: [TIME OF DAY: e.g. bright daylight / late afternoon golden light].\nCamera: [PERSPECTIVE: e.g. wide-angle 28mm at eye level / aerial drone view, straight down].' }
   ]}
 ];
 
@@ -1183,13 +1191,13 @@ function initPrompt() {
       var text = ta.value;
       var from = ta.selectionEnd;
       var rest = text.slice(from);
-      var m = rest.match(/\([^)]+\)/);
+      var m = rest.match(/\[[^\]]+\]/);
       if (m) {
         e.preventDefault();
         var s = from + rest.indexOf(m[0]);
         ta.setSelectionRange(s, s + m[0].length);
       } else {
-        var wrap = text.match(/\([^)]+\)/);
+        var wrap = text.match(/\[[^\]]+\]/);
         if (wrap) {
           e.preventDefault();
           var s = text.indexOf(wrap[0]);
@@ -1581,9 +1589,9 @@ function initTemplates() {
 function renderTmplItems(catIdx) {
   var list = q('#tmpl-list');
   list.innerHTML = TEMPLATES[catIdx].items.map(function(item, idx) {
-    var prev = item.text.replace(/\([^)]+\)/g, function(m) {
+    var prev = item.text.replace(/\[[^\]]+\]/g, function(m) {
       var label = m.slice(1, m.indexOf(':') > 0 ? m.indexOf(':') : m.length - 1);
-      return '(' + label.trim() + ')';
+      return '[' + label.trim() + ']';
     });
     return '<div class="tmpl-item" data-cat="' + catIdx + '" data-idx="' + idx + '">' +
       '<div class="tmpl-item-name">' + esc(item.name) + '</div>' +
@@ -1598,16 +1606,16 @@ function insertTemplate(text) {
   var ta = q('#prompt');
   ta.value = text;
   ta.dispatchEvent(new Event('input'));
-  var m = text.match(/\([^)]+\)/);
+  closeTmplPanel();
+  ta.focus();
+  var m = text.match(/\[[^\]]+\]/);
   if (m) {
     var s = text.indexOf(m[0]);
     ta.setSelectionRange(s, s + m[0].length);
   } else {
     ta.setSelectionRange(text.length, text.length);
   }
-  ta.focus();
-  closeTmplPanel();
-  showToast('Tab → nächsten Platzhalter auswählen');
+  showToast('Tab → nächsten [Platzhalter] auswählen');
 }
 
 /* ── STYLE CHIPS ── */
