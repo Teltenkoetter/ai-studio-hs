@@ -502,12 +502,12 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
     <div class="setup-card">
       <!-- Tabs -->
       <div class="setup-tabs">
-        <button class="setup-tab-btn on" id="tab-api" onclick="switchSetupTab('api')">🔑 Eigener API-Key</button>
-        <button class="setup-tab-btn" id="tab-ws" onclick="switchSetupTab('ws')">🎓 Workshop-Zugang</button>
+        <button class="setup-tab-btn" id="tab-api" onclick="switchSetupTab('api')">🔑 Eigener API-Key</button>
+        <button class="setup-tab-btn on" id="tab-ws" onclick="switchSetupTab('ws')">🎓 Zugang Lehre</button>
       </div>
 
       <!-- Pane: Eigener API-Key -->
-      <div class="setup-pane on" id="pane-api">
+      <div class="setup-pane" id="pane-api">
         <p class="desc">Nano Banana Studio ist kostenlos nutzbar — du brauchst nur einen eigenen <strong>Google Gemini API-Key</strong>. Den erstellst du in weniger als einer Minute, ganz ohne Abo.</p>
         <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:14px;font-size:12px;line-height:1.8;color:var(--muted);">
           <strong style="color:var(--text);display:block;margin-bottom:5px;">So bekommst du deinen API-Key:</strong>
@@ -522,7 +522,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <label class="field-lbl" for="key-input">API-Key <span style="color:var(--red);font-weight:700;">*</span></label>
         <div class="input-row">
           <input type="password" id="key-input" placeholder="AIzaSy…" autocomplete="off" spellcheck="false">
-          <div class="field-err" id="key-err">Muss mit „AIza" beginnen und mindestens 30 Zeichen lang sein.</div>
+          <div class="field-err" id="key-err">Kein gültiger Google API-Key (erwartet: AIza… oder AQ.…)</div>
         </div>
         <label class="field-lbl" for="name-input">Dein Name / Kürzel <span style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;">(optional · für die Kostenübersicht)</span></label>
         <div class="input-row">
@@ -531,12 +531,12 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <button class="btn btn-primary btn-full" id="btn-save">Speichern &amp; starten</button>
       </div>
 
-      <!-- Pane: Workshop-Zugang -->
-      <div class="setup-pane" id="pane-ws">
-        <p class="desc">Du hast einen Kurs-Zugang erhalten? Gib das Workshop-Passwort ein — die App läuft dann mit dem geteilten Kurs-Key.</p>
+      <!-- Pane: Zugang Lehre -->
+      <div class="setup-pane on" id="pane-ws">
+        <p class="desc">Du hast einen Kurs-Zugang erhalten? Gib das Passwort ein — die App läuft dann mit dem geteilten Kurs-Key.</p>
         <label class="field-lbl" for="ws-pass-input">Passwort <span style="color:var(--red);font-weight:700;">*</span></label>
         <div class="input-row">
-          <input type="password" id="ws-pass-input" placeholder="Workshop-Passwort" autocomplete="off" spellcheck="false">
+          <input type="password" id="ws-pass-input" placeholder="Kurs-Passwort" autocomplete="off" spellcheck="false">
           <div class="field-err" id="ws-err">Falsches Passwort — bitte nochmal versuchen.</div>
         </div>
         <label class="field-lbl" for="ws-name-input">Dein Name / Kürzel <span style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;">(optional · für die Kostenübersicht)</span></label>
@@ -555,7 +555,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 <!-- MAIN -->
 <div id="screen-main" class="screen">
   <header class="header">
-    <span class="header-title">🍌 Nano Banana Studio</span>
+    <span class="header-title" id="header-title" title="Zurück zum Login" style="cursor:pointer;">🍌 Nano Banana Studio</span>
     <button class="help-btn" id="btn-help" title="Hilfe &amp; Übersicht">?</button>
     <div class="key-pill" id="key-pill">
       <span>🔑</span>
@@ -877,7 +877,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 /* ── TRACKER ── Hier die Apps-Script-URL eintragen (leer = kein Tracking) */
 var APP_PIN          = '55116';
 var WORKSHOP_PASS    = 'SoSe2026!?!';
-var WORKSHOP_KEY_ENC = 'QUl6YVN5QlpDQW5halNDZnFvYktqdE9rQXpaTlNjR0lFX1hxRGs0';
+var WORKSHOP_KEY_ENC = 'QVEuQWI4Uk42STM0S25kWldUakFkYWZZOExDU0huUHRsc1pBNnkwaTM0YTRrMjU1aFJNNGc=';
 var TRACKER_URL = 'https://script.google.com/macros/s/AKfycbyENdn9zOo0k817sBG8jUzEjE2Pew4HOCFbSm08fJaj_IIHVspm4WAHhxKl78-OXlDf/exec';
 
 /* ── CONSTANTS ── */
@@ -1036,9 +1036,13 @@ q('#ws-name-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') doWorkshopLogin();
 });
 
+function isValidApiKey(k) {
+  return k.length >= 20 && (k.startsWith('AIza') || k.startsWith('AQ.'));
+}
+
 function doSave() {
   var k = q('#key-input').value.trim();
-  if (!k.startsWith('AIza') || k.length < 30) {
+  if (!isValidApiKey(k)) {
     q('#key-err').classList.add('show');
     q('#key-input').classList.add('err');
     q('#key-input').focus();
@@ -1072,7 +1076,7 @@ function doWorkshopLogin() {
 /* ── AUTO-LOGIN ── */
 (function() {
   var k = sessionStorage.getItem('nb_key');
-  if (k && k.startsWith('AIza') && k.length >= 30) {
+  if (k && isValidApiKey(k)) {
     S.key  = k;
     S.name = sessionStorage.getItem('nb_name') || 'Anonym';
     launchApp(k);
@@ -1194,13 +1198,15 @@ function launchApp(key) {
   loadHistory();
 }
 
-/* ── REMOVE KEY ── */
-q('#btn-remove-key').addEventListener('click', function() {
-  if (!confirm('API-Key entfernen und zum Start zurückkehren?')) return;
+/* ── REMOVE KEY / BACK TO LOGIN ── */
+function goToLogin() {
+  if (!confirm('Zurück zum Login?')) return;
   sessionStorage.removeItem('nb_key');
   sessionStorage.removeItem('nb_workshop');
   location.reload();
-});
+}
+q('#btn-remove-key').addEventListener('click', goToLogin);
+q('#header-title').addEventListener('click', goToLogin);
 
 /* ── RESIZE PANEL ── */
 function initResize() {
