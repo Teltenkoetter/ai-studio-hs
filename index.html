@@ -867,7 +867,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Schnellstart</h3>
         <ul>
           <li><strong>Prompt eingeben</strong> — Beschreibe dein Bild. Englisch für Stilbegriffe empfohlen, Deutsch funktioniert auch.</li>
-          <li><strong>📋 Vorlagen</strong> — 27 Prompts in 5 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
+          <li><strong>📋 Vorlagen</strong> — 36 Prompts in 6 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
           <li><strong>✨</strong> — Prompt automatisch mit KI verbessern und ausformulieren</li>
           <li><strong>✕</strong> — Prompt-Feld leeren</li>
           <li><strong>⚡ Generieren</strong> klicken oder <strong>Strg+Enter</strong></li>
@@ -952,7 +952,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Quick Start</h3>
         <ul>
           <li><strong>Enter a prompt</strong> — Describe your image. English recommended for style terms, German works too.</li>
-          <li><strong>📋 Templates</strong> — 27 prompts in 5 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
+          <li><strong>📋 Templates</strong> — 36 prompts in 6 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
           <li><strong>✨</strong> — Auto-improve and expand the prompt using AI</li>
           <li><strong>✕</strong> — Clear the prompt field</li>
           <li>Click <strong>⚡ Generate</strong> or press <strong>Ctrl+Enter</strong></li>
@@ -1049,7 +1049,8 @@ var COURSES = [
   { gruppe: 'DE3',     label: 'Digitales Entwerfen 3', enc: 'R2VuaXVzTG9jaTI2IQ==' },
   { gruppe: 'Entwurf', label: 'Entwurf',               enc: 'TGVzc01vcmUyNiE='     },
   { gruppe: 'Gast1',   label: 'Gast 1',                enc: 'V2Vpw59yYXVtMjYh'    },
-  { gruppe: 'Gast2',   label: 'Gast 2',                enc: 'QmF1aGF1czI2IQ=='    }
+  { gruppe: 'Gast2',   label: 'Gast 2',                enc: 'QmF1aGF1czI2IQ=='    },
+  { gruppe: 'Klaus',  label: 'Klaus',                 enc: 'TWlmdW5lIT8h'        }
 ];
 
 /* FLUX via Pollinations.ai (kein Token nötig) */
@@ -1255,6 +1256,26 @@ var TEMPLATES = [
       text: 'This is a [VIEW TYPE: e.g. wireframe / plain render / grey massing model] of a 3D object.\nApply the following materials and finishes to the object:\n[SURFACE 1: e.g. top face → honed white Carrara marble]\n[SURFACE 2: e.g. side panels → brushed stainless steel]\n[SURFACE 3: e.g. base / legs → matte black powder-coated steel]\nKeep the geometry, proportions, and camera angle exactly as in the original image.\nLighting: [LIGHTING: e.g. soft studio light from upper left / neutral grey background / white cyclorama].\nPhotorealistic material rendering, correct reflections and surface texture.' },
     { name: 'Produktvisualisierung / Studio-Shot',
       text: 'Create a photorealistic studio product visualisation of the 3D object in this image.\nBackground: [BACKGROUND: e.g. pure white cyclorama / soft gradient warm grey / dark anthracite / neutral light grey linen].\nMaterial: [MATERIAL: e.g. natural oak with visible grain / matte white lacquer / sand-cast aluminium / hand-glazed ceramic].\nLighting: [LIGHTING: e.g. soft diffuse studio light, no hard shadows / dramatic single spotlight from above / three-point lighting setup].\nCamera: [PERSPECTIVE: e.g. three-quarter front view, slight above eye-level / straight frontal elevation / low angle detail shot].\nNo props or context — clean, minimal product photography. High resolution.' }
+  ]},
+  { cat: '👤 Personen', items: [
+    { name: 'Weißer Cutout aus Foto',
+      text: 'Convert the person in this photo into a clean architectural figure cutout.\nStyle: [RENDERING STYLE: e.g. flat white silhouette / light grey with minimal shading / black and white line contour].\nBackground: pure white, clean edges — suitable for compositing into architectural renders, plans, and sections.\nKeep the pose and proportions exactly as in the original photo.\nArchitectural scale figure, professional quality.' },
+    { name: 'Maßstabsfigur generieren',
+      text: 'Generate architectural scale figures for use in renders and drawings.\nPoses: [POSES: e.g. standing person / sitting figure / walking / leaning against wall / two people talking].\nStyle: [RENDERING STYLE: e.g. flat white silhouette / grey architectural sketch / watercolour wash / black ink line drawing].\nPerson: [PERSON: e.g. adult woman / man / mixed group of 3 / child and adult].\nBackground: pure white — suitable for plans, sections, and architectural renders.\nCorrect human proportions, architecturally appropriate scale.' },
+    { name: 'Silhouette / Schattenriss',
+      text: 'Create a clean architectural silhouette figure.\nPose: [POSE: e.g. standing upright / sitting / walking / leaning / two people talking].\nStyle: [STYLE: e.g. solid black silhouette / dark grey with slight transparency / outlined contour only / bold graphic].\nBackground: pure white.\nUse: architectural section, elevation, or render entourage. Correct human proportions.' },
+    { name: 'Person in Interieur einsetzen',
+      text: 'Image 1 is my interior render or architectural photo. Image 2 shows the person to be placed into the scene.\nComposite the person from Image 2 naturally into the interior of Image 1.\nPosition: [POSITION: e.g. standing in the centre of the room / sitting on the sofa / walking through the space / looking out the window].\nMatch the lighting, shadows, and colour grading of Image 1 exactly — the person must appear as if they were always part of the scene.\nCorrect architectural scale and perspective. Do not alter any architectural elements of Image 1.' },
+    { name: 'Personengruppe im Raum',
+      text: 'Add a natural group of people to this [SPACE TYPE: e.g. open-plan office / residential living room / hotel lobby / café / gallery].\nGroup: [GROUP: e.g. 2 colleagues in conversation / a family relaxing / 3 people working at desks / visitors browsing a gallery].\nStyle: [RENDERING STYLE: e.g. photorealistic / architectural sketch style / editorial photography].\nMood: [MOOD: e.g. relaxed and natural / professional / social and lively].\nIntegrate naturally — match lighting, scale, and perspective exactly. Do not alter the architecture.' },
+    { name: 'Lifestyle-Person für Moodboard',
+      text: 'Create a lifestyle image of a person that fits the following interior design concept.\nInterior style: [STYLE: e.g. Japandi / Scandinavian minimalism / warm luxury / industrial loft].\nPerson: [PERSON: e.g. young woman in casual linen / man in business casual / creative professional / couple].\nSetting: [SETTING: e.g. reading in an armchair by a window / working at a minimal desk / relaxing on a sofa / in a minimalist kitchen].\nMood: [MOOD: e.g. calm and contemplative / editorial / warm and intimate].\nEditorial photography style, natural light, authentic atmosphere.' },
+    { name: 'Porträt aufwerten',
+      text: 'Enhance and retouch this portrait photograph professionally.\nImprovements: [IMPROVEMENTS: e.g. improve skin tone and lighting / enhance sharpness and detail / professional colour grading / remove distracting elements].\nNew background: [BACKGROUND: e.g. clean white studio / soft grey gradient / blurred architectural interior / neutral warm tone].\nLighting: [LIGHTING: e.g. natural soft daylight / professional studio lighting / warm ambient].\nMaintain a natural, authentic look — no over-retouching. High quality portrait photography result.' },
+    { name: 'Hintergrund entfernen / ersetzen',
+      text: 'Remove the existing background from this portrait or person photo and replace it with a clean, neutral background.\nNew background: [BACKGROUND: e.g. pure white / light grey gradient / soft warm beige / blurred architectural interior / neutral studio backdrop].\nKeep the person, clothing, and hair with sharp, natural edges — no harsh cutouts.\nSuitable for presentations, documents, and design collages.' },
+    { name: 'Person als Architektur-Skizze',
+      text: 'Convert this photo of a person into an architectural drawing or sketch style figure.\nStyle: [DRAWING STYLE: e.g. precise ink line drawing / watercolour wash with pencil contour / bold black marker sketch / light pencil hatching].\nDetail level: [DETAIL: e.g. detailed face and clothing / simplified silhouette with minimal detail / abstract gestural figure].\nBackground: [BACKGROUND: e.g. pure white / light cream paper texture / simple grey wash].\nSuitable for architectural presentations, collages, and hand-drawn render styles.' }
   ]},
   { cat: '🎨 Stimmung & Stil', items: [
     { name: 'Architekturstil übertragen',
