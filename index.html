@@ -2030,13 +2030,13 @@ function callHuggingFace(prompt, seed) {
   }
   if (seed !== null && seed !== undefined) params.seed = seed;
 
-  /* Neuer HuggingFace Router-Endpoint (2025) */
-  var hfUrl = 'https://router.huggingface.co/hf-inference/models/' + S.model;
+  var hfUrl = 'https://api-inference.huggingface.co/models/' + S.model;
   return fetch(hfUrl, {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer ' + S.hfKey,
-      'Content-Type':  'application/json'
+      'Authorization':    'Bearer ' + S.hfKey,
+      'Content-Type':     'application/json',
+      'X-Wait-For-Model': 'true'
     },
     body: JSON.stringify({ inputs: prompt, parameters: params })
   })
