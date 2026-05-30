@@ -147,7 +147,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 }
 .btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .btn:not(:disabled):active { transform: scale(0.97); }
-.btn-primary { background: var(--accent); color: var(--acc-txt); font-weight: 700; font-size: 14px; }
+.btn-primary { background: #d8d8d8; color: var(--acc-txt); font-weight: 700; font-size: 14px; }
 .btn-primary:not(:disabled):hover { opacity: 0.88; }
 .btn-secondary { background: transparent; border: 1px solid var(--bd-hi); color: var(--text); }
 .btn-secondary:not(:disabled):hover { background: var(--s3); border-color: rgba(255,255,255,0.18); }
@@ -540,7 +540,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 
       <!-- Pane: Eigener API-Key -->
       <div class="setup-pane" id="pane-api">
-        <p class="desc">KI Studio ist kostenlos nutzbar — du brauchst nur einen eigenen <strong>Google Gemini API-Key</strong>. Den erstellst du in weniger als einer Minute, ganz ohne Abo.</p>
+        <p class="desc">Du benötigst einen eigenen <strong>Google Gemini API-Key</strong>. Dieser erfordert ein Google-Konto mit <strong>hinterlegter Kreditkarte</strong> — die Nutzung wird pro generiertem Bild abgerechnet (ca. 0,02–0,13 € je nach Modell). Google bietet wahlweise ein monatliches Budget oder direkte Abrechnung nach Verbrauch.</p>
         <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:14px;font-size:12px;line-height:1.8;color:var(--muted);">
           <strong style="color:var(--text);display:block;margin-bottom:5px;">So bekommst du deinen API-Key:</strong>
           <span style="color:var(--text);">1.</span> <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">aistudio.google.com/apikey</a> öffnen<br>
@@ -549,7 +549,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         </div>
         <div class="warn-box">
           <span>⚠️</span>
-          <span><strong>Sicherheit:</strong> Diesen Key nie weitergeben — nicht an Personen, nicht in öffentlichen Projekten. Er wird nur im aktuellen Browser-Tab gespeichert und beim Schließen automatisch gelöscht.</span>
+          <span><strong>Sicherheit:</strong> Diesen Key niemals weitergeben — er ist nur im aktuellen Browser-Tab gespeichert und wird beim Schließen automatisch gelöscht.</span>
         </div>
         <label class="field-lbl" for="key-input">API-Key <span style="color:var(--red);font-weight:700;">*</span></label>
         <div class="input-row">
@@ -566,6 +566,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
       <!-- Pane: Zugang Lehre -->
       <div class="setup-pane on" id="pane-ws">
         <p class="desc">Du hast einen Kurs-Zugang erhalten? Gib das Kurs-Passwort ein.</p>
+        <div style="background:rgba(99,179,237,0.07);border:1px solid rgba(99,179,237,0.2);border-radius:var(--r-sm);padding:9px 12px;margin-bottom:12px;font-size:11px;color:#90cdf4;line-height:1.55;">
+          ℹ️ KI Studio kann im Eduroam-Netz nicht aufgerufen werden. Öffne die App zunächst in einem anderen Netz — danach kannst du sie auch im Eduroam nutzen.
+        </div>
         <div style="background:rgba(251,146,60,0.07);border:1px solid rgba(251,146,60,0.2);border-radius:var(--r-sm);padding:9px 12px;margin-bottom:16px;font-size:11px;color:#fb923c;line-height:1.55;">
           ⚠️ Das Passwort ist vertraulich — bitte nicht weitergeben. Übermäßige Nutzung durch Dritte kann zur Sperrung des Kurs-Zugangs führen.
         </div>
@@ -867,7 +870,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Schnellstart</h3>
         <ul>
           <li><strong>Prompt eingeben</strong> — Beschreibe dein Bild. Englisch für Stilbegriffe empfohlen, Deutsch funktioniert auch.</li>
-          <li><strong>📋 Vorlagen</strong> — 36 Prompts in 6 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
+          <li><strong>📋 Vorlagen</strong> — 37 Prompts in 6 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
           <li><strong>✨</strong> — Prompt automatisch mit KI verbessern und ausformulieren</li>
           <li><strong>✕</strong> — Prompt-Feld leeren</li>
           <li><strong>⚡ Generieren</strong> klicken oder <strong>Strg+Enter</strong></li>
@@ -952,7 +955,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Quick Start</h3>
         <ul>
           <li><strong>Enter a prompt</strong> — Describe your image. English recommended for style terms, German works too.</li>
-          <li><strong>📋 Templates</strong> — 36 prompts in 6 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
+          <li><strong>📋 Templates</strong> — 37 prompts in 6 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
           <li><strong>✨</strong> — Auto-improve and expand the prompt using AI</li>
           <li><strong>✕</strong> — Clear the prompt field</li>
           <li>Click <strong>⚡ Generate</strong> or press <strong>Ctrl+Enter</strong></li>
@@ -1244,6 +1247,8 @@ var TEMPLATES = [
       text: 'Take this image of a furnished room and make ONLY these specific changes: [EDIT: e.g. replace the coffee table with a modern travertine stone one / change the wall colour to deep olive green / swap the pendant light for a sculptural brass fixture / add a large-format art print above the sofa].\nDo NOT alter any other furniture, layout, lighting, colours, architecture, proportions, or camera angle.\nKeep every unchanged element exactly as it appears in the original image.' },
     { name: 'Kamera & Perspektive setzen',
       text: 'Render this [ROOM: e.g. living room / office / dining area] from the following camera position:\nPerspective: [PERSPECTIVE: e.g. one-point central perspective facing the main wall / two-point corner perspective].\nCamera height: [CAMERA HEIGHT: e.g. eye level at 1.60m / low angle at 0.80m / elevated at 2.50m].\nFocal length: [FOCAL LENGTH: e.g. wide-angle 24mm / standard 35mm / slight tele 50mm].\nStyle: architectural photography, vertical lines perfectly straight, no lens distortion, natural daylight.\nDo not change anything about the architecture, materials, or interior — only the camera position.' },
+    { name: 'Raum aufräumen / Staging',
+      text: 'Clean up and declutter this interior photo — remove all small objects and distracting elements, leaving only the essential furniture and architecture.\nRemove: [REMOVE: e.g. all items on surfaces (books, cups, papers) / personal belongings and clutter / people and figures / rubbish and temporary objects / cables and technical equipment].\nKeep: [KEEP: e.g. all furniture and built-in elements / large plants / architectural features / lighting fixtures].\nDo not alter the architecture, materials, spatial proportions, lighting, or camera angle in any way.\nResult: a clean, professionally staged interior — ready for presentation or architectural documentation.' },
     { name: 'Licht & Stimmung wechseln',
       text: 'Change only the lighting and atmosphere in this interior image.\nNew lighting: [LIGHTING: e.g. warm evening light with indirect wall sconces / bright overcast midday / golden hour low sun casting long shadows].\nSeason / time of day: [SEASON: e.g. summer afternoon / winter dusk / late evening].\nDo not alter the geometry, materials, furniture, or camera angle in any way. Only lighting and mood should change.' }
   ]},
