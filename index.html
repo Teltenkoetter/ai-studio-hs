@@ -786,6 +786,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="upload-warn" id="upload-warn" style="display:none;">
           ⚠️ Imagen-Modelle unterstützen keine Bild-Eingabe — bitte wechsle zu einem Gemini-Modell.
         </div>
+        <div id="ctx-badge" style="display:none;font-size:11px;padding:5px 10px;border-radius:var(--r-sm);margin-bottom:8px;line-height:1.4;"></div>
 
         <div class="mode-row" id="mode-row" style="display:none;">
           <div class="seg" id="seg-mode">
@@ -1651,10 +1652,26 @@ function initParams() {
   });
   initSeg('seg-sysctx', function(v) {
     S.sysCtx = v;
-    var note = q('#sysctx-note');
-    if (v === 'expert') note.textContent = 'Photorealistisch, geometrisch präzise, professionelle Beleuchtung.';
-    else if (v === 'grey') note.textContent = 'Ausschließlich Schwarz-Weiß, starke Kontraste, keine Farbe.';
-    else note.textContent = '';
+    var note  = q('#sysctx-note');
+    var badge = q('#ctx-badge');
+    if (v === 'expert') {
+      note.textContent = 'Photorealistisch, geometrisch präzise, professionelle Beleuchtung.';
+      badge.style.display = '';
+      badge.style.background = 'rgba(99,179,237,0.1)';
+      badge.style.border = '1px solid rgba(99,179,237,0.25)';
+      badge.style.color = '#90cdf4';
+      badge.textContent = '⚡ System-Kontext aktiv: Expert — photorealistisch, geometrisch präzise';
+    } else if (v === 'grey') {
+      note.textContent = 'Ausschließlich Schwarz-Weiß, starke Kontraste, keine Farbe.';
+      badge.style.display = '';
+      badge.style.background = 'rgba(255,255,255,0.05)';
+      badge.style.border = '1px solid rgba(255,255,255,0.12)';
+      badge.style.color = '#aaa';
+      badge.textContent = '⬛ System-Kontext aktiv: Graustufen — kein Farbe, nur Schwarz-Weiß';
+    } else {
+      note.textContent = '';
+      badge.style.display = 'none';
+    }
   });
   q('#btn-dice').addEventListener('click', function() {
     q('#seed-input').value = Math.floor(Math.random() * 2147483647);
@@ -1931,11 +1948,17 @@ function callGemini(prompt, seed) {
   }
   if (seed !== null && seed !== undefined) cfg.seed = seed;
 
+  /* Kontext direkt in den Prompt injizieren — zuverlässiger als systemInstruction allein */
+  var ctxPrefix = '';
+  if (S.sysCtx === 'grey')   ctxPrefix = 'IMPORTANT: Generate this image in black and white ONLY — absolutely no colors, only greyscale tones. ';
+  if (S.sysCtx === 'expert') ctxPrefix = 'Generate a photorealistic, geometrically precise, professional architectural visualization. ';
+  var effectivePrompt = ctxPrefix + prompt;
+
   var userParts = [];
   S.inputImages.forEach(function(img) {
     userParts.push({ inlineData: { mimeType: img.mime, data: img.b64 } });
   });
-  userParts.push({ text: prompt });
+  userParts.push({ text: effectivePrompt });
 
   var contents;
   if (S.chatMode === 'continue' && S.chatHistory.length > 0) {
