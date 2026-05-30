@@ -1181,106 +1181,106 @@ var SYS_INSTRUCTIONS = {
 /* ── STYLE CHIPS ── */
 
 var TEMPLATES = [
-  { cat: '🏗 Architektur & Landschaft', items: [
-    { name: 'Neubau aus Skizze / Konzept',
+  { cat: '1 Architektur & Landschaft', items: [
+    { name: '1.1 Neubau aus Skizze / Konzept',
       text: 'Transform this [DRAWING: e.g. sketch / floor plan / concept drawing] into a photorealistic architectural render.\nBuilding type: [BUILDING TYPE: e.g. detached house / apartment building / cultural centre / office pavilion].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary minimalist / Bauhaus / organic / brutalist].\nFacade materials: [MATERIALS: e.g. fair-faced concrete, dark aluminium frames, weathered oak, oxidized copper cladding].\nSetting: [SETTING: e.g. urban street / wooded hillside / open flat landscape].\nTime of day: [TIME OF DAY: e.g. late afternoon golden hour / bright overcast].\nCamera: [PERSPECTIVE: e.g. street-level two-point perspective, wide-angle 28mm].' },
-    { name: 'Fassade überarbeiten',
+    { name: '1.2 Fassade überarbeiten',
       text: 'Change the facade materials and cladding of this building only.\nReplace [FACADE FROM: e.g. white render] with [FACADE TO: e.g. dark Corten steel panels with horizontal ribbing].\nReplace [DETAIL FROM: e.g. standard windows] with [DETAIL TO: e.g. floor-to-ceiling black aluminium framed glazing].\nDo not alter the building geometry, volume, floor plan, openings, or proportions in any way. Do not change the landscape, surroundings, or sky.' },
-    { name: 'Außenraum / Landscaping gestalten',
+    { name: '1.3 Außenraum / Landscaping gestalten',
       text: 'The building and architecture in this image must remain exactly as they are — do not change any facade, windows, materials, or structure.\nWe are only editing the outdoor space and landscaping.\nNew landscaping: [LANDSCAPING: e.g. replace the lawn with a gravel courtyard and ornamental grasses / add a row of mature birch trees along the facade / create a planted green roof with sedum and wildflowers / add a formal hedge border and stone pathway].\nKeep the original sky, lighting, and time of day unchanged.' },
-    { name: 'Anderen Winkel / Blickrichtung',
+    { name: '1.4 Anderen Winkel / Blickrichtung',
       text: 'Generate a view of this [BUILDING: e.g. house / apartment block / pavilion] from [VIEW DIRECTION: e.g. the front-left corner / a bird\'s eye perspective / street level looking up].\nKeep everything about the building and its surroundings exactly the same — do not change anything about the architecture, materials, landscape, or lighting. Only the camera position and viewing angle should change.' },
-    { name: 'Weißmodell → Fassadenrender',
+    { name: '1.5 Weißmodell → Fassadenrender',
       text: 'Transform this white/grey architectural massing model into a photorealistic exterior render.\nStyle: [ARCHITECTURAL STYLE: e.g. Scandinavian minimalism / raw industrial / warm Mediterranean].\nFacade materials: [FACADE MATERIALS: e.g. pale brick, blackened timber cladding, large glazed surfaces, green planted roof].\nLandscape: [OUTDOOR SPACE: e.g. simple courtyard with ornamental grasses and gravel / mature urban street trees].\nTime of day: [TIME OF DAY: e.g. overcast bright day / warm late afternoon golden hour].\nDo not change the geometry or proportions of the model.' },
-    { name: 'Screenshot / 3D-Modell → Render',
+    { name: '1.6 Screenshot / 3D-Modell → Render',
       text: 'This is a screenshot of my [MODEL TYPE: e.g. SketchUp model / Rhino render / 3D massing study / CAD drawing].\nTransform it into a photorealistic architectural render. Add realistic sky, surface textures, and materials: [MATERIALS: e.g. fair-faced concrete, weathered timber cladding, large aluminium-framed glazing, planted green roof].\nWeather and time of day: [WEATHER: e.g. bright sunny day with sharp shadows / soft overcast winter light / golden hour sunset with warm glow / twilight with interior lights on].\nAdd [ENTOURAGE: e.g. people walking and sitting around the building / realistic vegetation only / no people].\nDo not change the perspective, building geometry, or camera angle of the original image.\nHigh quality photorealistic architectural rendering.' },
-    { name: 'Rohbauphase / Reverse Engineering',
+    { name: '1.7 Rohbauphase / Reverse Engineering',
       text: 'Generate a version of this image showing the building during shell construction phase.\nConstruction stage: [CONSTRUCTION STAGE: e.g. concrete foundation and rising walls / steel frame structure / masonry shell without windows].\nShow construction machinery, building materials, and scaffolding scattered around the site.\nThe surroundings, trees, and landscape should remain the same as in the original image.\nWeather: [WEATHER: e.g. overcast and rainy / bright working day with blue sky].' },
-    { name: 'Jahreszeit & Wetter wechseln',
+    { name: '1.8 Jahreszeit & Wetter wechseln',
       text: 'Change only the season, weather, and sky in this image.\nNew condition: [SEASON & WEATHER: e.g. winter with snow on the ground, bare trees, low cold sun / summer with lush foliage, deep blue sky, hard shadows / autumn with warm coloured leaves, overcast soft light].\nDo not alter the building, architecture, materials, or landscape structure in any way. Only seasonal vegetation, sky, weather effects, and ground covering should change.' },
-    { name: 'Grundriss / Lageplan → Render',
+    { name: '1.9 Grundriss / Lageplan → Render',
       text: 'Transform this [DRAWING: e.g. floor plan / site plan / section drawing] into a photorealistic architectural render.\nView: [VIEW: e.g. interior perspective / aerial bird\'s eye view / street-level exterior].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary residential / warm Scandinavian / commercial modern].\nMaterials: [MATERIALS: e.g. concrete, glass, timber, planted green surfaces].\nTime of day: [TIME OF DAY: e.g. bright daylight / late afternoon golden light].\nCamera: [PERSPECTIVE: e.g. wide-angle 28mm at eye level / aerial drone view, straight down].' }
   ]},
-  { cat: '🏠 Innenarchitektur', items: [
-    { name: 'Leeren Raum einrichten',
+  { cat: '2 Innenarchitektur', items: [
+    { name: '2.1 Leeren Raum einrichten',
       text: '[ROOM TYPE: e.g. minimalist living room / open-plan office / loft apartment] with [FEATURES: e.g. floor-to-ceiling glazing, exposed concrete ceiling, open layout].\nMateriality: [SURFACES: e.g. brushed oak panels, polished fair-faced concrete, ribbed glass, natural stone floor].\nLight & mood: [LIGHTING: e.g. low afternoon sun in summer, soft shadow play, warm quiet atmosphere].\nCamera: architectural photography, [FOCAL LENGTH: e.g. wide-angle 24mm] at eye level, [PERSPECTIVE: e.g. one-point central / two-point corner], vertical lines perfectly straight. Photorealistic.' },
-    { name: 'Weißmodell → Eingerichteter Raum',
+    { name: '2.2 Weißmodell → Eingerichteter Raum',
       text: 'Transform this white/grey architectural model into a fully furnished, photorealistic interior render.\nStyle: [INTERIOR STYLE: e.g. Japandi / Scandinavian minimalism / contemporary luxury / warm industrial].\nMaterials & furniture: [MATERIALS & FURNITURE: e.g. low-profile linen sofa, smoked oak shelving, polished concrete floor, paper pendant lamp].\nLighting: [LIGHTING: e.g. diffuse daylight from large windows, warm accent lighting].\nCamera: [PERSPECTIVE: e.g. wide-angle 24mm at eye level, one-point perspective, vertical lines straight].\nDo not change the geometry or proportions of the architectural model.' },
-    { name: 'Materialien & Oberflächen tauschen',
+    { name: '2.3 Materialien & Oberflächen tauschen',
       text: '💡 Tipp: Bild 1 = Raum/Modell (Geometrie), Bild 2 = Materialreferenz/Collage (Stil).\nChange the materials and surface finishes in this image only.\nReplace [MATERIAL FROM: e.g. white painted walls] with [MATERIAL TO: e.g. raw fair-faced concrete].\nReplace [MATERIAL FROM: e.g. light laminate floor] with [MATERIAL TO: e.g. large-format honed travertine tiles].\nReplace [MATERIAL FROM: e.g. standard ceiling] with [MATERIAL TO: e.g. exposed timber beams].\nDo not alter the geometry, floor plan, spatial proportions, furniture placement, lighting, or camera angle in any way. Only change materials and surface finishes.' },
-    { name: 'Möblierung ersetzen',
+    { name: '2.4 Möblierung ersetzen',
       text: 'Replace the furniture and decor in this interior image with a new [INTERIOR STYLE: e.g. mid-century modern / minimalist / eclectic] style.\nNew furniture: [NEW FURNITURE: e.g. low walnut sideboard, curved velvet sofa in deep green, brass pendant lights, woven area rug].\nKeep the architectural structure, walls, floors, ceiling, windows, and all fixed elements completely unchanged.\nMaintain the original lighting and camera perspective.' },
-    { name: 'Einzelnes Element ändern',
+    { name: '2.5 Einzelnes Element ändern',
       text: 'Take this image of a furnished room and make ONLY these specific changes: [EDIT: e.g. replace the coffee table with a modern travertine stone one / change the wall colour to deep olive green / swap the pendant light for a sculptural brass fixture / add a large-format art print above the sofa].\nDo NOT alter any other furniture, layout, lighting, colours, architecture, proportions, or camera angle.\nKeep every unchanged element exactly as it appears in the original image.' },
-    { name: 'Kamera & Perspektive setzen',
+    { name: '2.6 Kamera & Perspektive setzen',
       text: 'Render this [ROOM: e.g. living room / office / dining area] from the following camera position:\nPerspective: [PERSPECTIVE: e.g. one-point central perspective facing the main wall / two-point corner perspective].\nCamera height: [CAMERA HEIGHT: e.g. eye level at 1.60m / low angle at 0.80m / elevated at 2.50m].\nFocal length: [FOCAL LENGTH: e.g. wide-angle 24mm / standard 35mm / slight tele 50mm].\nStyle: architectural photography, vertical lines perfectly straight, no lens distortion, natural daylight.\nDo not change anything about the architecture, materials, or interior — only the camera position.' },
-    { name: 'Ausstellungsstand / Showroom',
+    { name: '2.7 Ausstellungsstand / Showroom',
       text: 'Create a photorealistic image of a [USE TYPE: e.g. trade show booth / brand showroom / retail space] for [BRAND / THEME: e.g. a furniture brand / architecture office / tech company].\nStyle: [STYLE: e.g. Scandinavian minimalist / raw industrial / high-end luxury].\nPrimary materials and colours: [MATERIALS & COLOURS: e.g. blackened steel, light oak, matte white surfaces, brand colour accents].\nKey spatial elements: [SPATIAL ELEMENTS: e.g. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting].\nSetting: [SETTING: e.g. dark trade show hall with polished concrete floor / bright white gallery space].\nInclude [PEOPLE: e.g. visitors and staff naturally interacting / no people].' },
-    { name: 'Licht & Stimmung wechseln',
+    { name: '2.8 Licht & Stimmung wechseln',
       text: 'Change only the lighting and atmosphere in this interior image.\nNew lighting: [LIGHTING: e.g. warm evening light with indirect wall sconces / bright overcast midday / golden hour low sun casting long shadows].\nSeason / time of day: [SEASON: e.g. summer afternoon / winter dusk / late evening].\nDo not alter the geometry, materials, furniture, or camera angle in any way. Only lighting and mood should change.' }
   ]},
-  { cat: '📦 Objekt im Raum', items: [
-    { name: '3D-Objekt in beschriebene Szene',
+  { cat: '3 Objekt im Raum', items: [
+    { name: '3.1 3D-Objekt in beschriebene Szene',
       text: 'This is a screenshot of a 3D object modelled in [SOFTWARE: e.g. Rhino / SketchUp / Blender].\nPlace this object into the following scene: [SCENE DESCRIPTION: e.g. a minimalist living room with concrete floor and large windows / a sunlit courtyard with gravel and ornamental grasses / a dark gallery space with spotlights].\nMaterial of the object: [MATERIAL: e.g. matte white lacquer / dark patinated steel / natural oak veneer / glossy ceramic].\nLighting: [LIGHTING: e.g. soft diffuse daylight / warm evening ambient light / dramatic directional studio light].\nCamera: [PERSPECTIVE: e.g. three-quarter front view, eye level / frontal elevation / slight bird\'s eye].\nPhotorealistic render, correct scale and proportions, integrated shadows and reflections.' },
-    { name: '3D-Objekt in hochgeladenes Bild setzen',
+    { name: '3.2 3D-Objekt in hochgeladenes Bild setzen',
       text: 'Image 1 is my room or context photo. Image 2 is a screenshot of my 3D object from [SOFTWARE: e.g. Rhino / SketchUp].\nComposite the 3D object from Image 2 into the scene of Image 1.\nPosition the object [POSITION: e.g. in the centre of the room / against the left wall / in front of the window].\nApply material to the object: [MATERIAL: e.g. brushed concrete / smoked oak / white matte lacquer / polished terrazzo].\nMatch the lighting, shadows, and colour grading of Image 1 exactly — the object must appear as if it was always part of the scene.\nDo not alter anything else in Image 1. Correct architectural scale.' },
-    { name: 'Materialzuweisung auf 3D-Objekt',
+    { name: '3.3 Materialzuweisung auf 3D-Objekt',
       text: '💡 Tipp: Bild 1 = 3D-Objekt/Weißmodell (Geometrie), Bild 2 = Materialreferenz/Collage (Oberflächen).\nThis is a [VIEW TYPE: e.g. wireframe / plain render / grey massing model] of a 3D object.\nApply the following materials and finishes to the object:\n[SURFACE 1: e.g. top face → honed white Carrara marble]\n[SURFACE 2: e.g. side panels → brushed stainless steel]\n[SURFACE 3: e.g. base / legs → matte black powder-coated steel]\nKeep the geometry, proportions, and camera angle exactly as in the original image.\nLighting: [LIGHTING: e.g. soft studio light from upper left / neutral grey background / white cyclorama].\nPhotorealistic material rendering, correct reflections and surface texture.' },
-    { name: 'Produktvisualisierung / Studio-Shot',
+    { name: '3.4 Produktvisualisierung / Studio-Shot',
       text: 'Create a photorealistic studio product visualisation of the 3D object in this image.\nBackground: [BACKGROUND: e.g. pure white cyclorama / soft gradient warm grey / dark anthracite / neutral light grey linen].\nMaterial: [MATERIAL: e.g. natural oak with visible grain / matte white lacquer / sand-cast aluminium / hand-glazed ceramic].\nLighting: [LIGHTING: e.g. soft diffuse studio light, no hard shadows / dramatic single spotlight from above / three-point lighting setup].\nCamera: [PERSPECTIVE: e.g. three-quarter front view, slight above eye-level / straight frontal elevation / low angle detail shot].\nNo props or context — clean, minimal product photography. High resolution.' }
   ]},
-  { cat: '👤 Personen', items: [
-    { name: 'Weißer Cutout aus Foto',
+  { cat: '4 Personen', items: [
+    { name: '4.1 Weißer Cutout aus Foto',
       text: 'Convert the person in this photo into a clean architectural figure cutout.\nStyle: [RENDERING STYLE: e.g. flat white silhouette / light grey with minimal shading / black and white line contour].\nBackground: pure white, clean edges — suitable for compositing into architectural renders, plans, and sections.\nKeep the pose and proportions exactly as in the original photo.\nArchitectural scale figure, professional quality.' },
-    { name: 'Maßstabsfigur generieren',
+    { name: '4.2 Maßstabsfigur generieren',
       text: 'Generate architectural scale figures for use in renders and drawings.\nPoses: [POSES: e.g. standing person / sitting figure / walking / leaning against wall / two people talking].\nStyle: [RENDERING STYLE: e.g. flat white silhouette / grey architectural sketch / watercolour wash / black ink line drawing].\nPerson: [PERSON: e.g. adult woman / man / mixed group of 3 / child and adult].\nBackground: pure white — suitable for plans, sections, and architectural renders.\nCorrect human proportions, architecturally appropriate scale.' },
-    { name: 'Silhouette / Schattenriss',
+    { name: '4.3 Silhouette / Schattenriss',
       text: 'Create a clean architectural silhouette figure.\nPose: [POSE: e.g. standing upright / sitting / walking / leaning / two people talking].\nStyle: [STYLE: e.g. solid black silhouette / dark grey with slight transparency / outlined contour only / bold graphic].\nBackground: pure white.\nUse: architectural section, elevation, or render entourage. Correct human proportions.' },
-    { name: 'Person in Interieur einsetzen',
+    { name: '4.4 Person in Interieur einsetzen',
       text: 'Image 1 is my interior render or architectural photo. Image 2 shows the person to be placed into the scene.\nComposite the person from Image 2 naturally into the interior of Image 1.\nPosition: [POSITION: e.g. standing in the centre of the room / sitting on the sofa / walking through the space / looking out the window].\nMatch the lighting, shadows, and colour grading of Image 1 exactly — the person must appear as if they were always part of the scene.\nCorrect architectural scale and perspective. Do not alter any architectural elements of Image 1.' },
-    { name: 'Personengruppe im Raum',
+    { name: '4.5 Personengruppe im Raum',
       text: 'Add a natural group of people to this [SPACE TYPE: e.g. open-plan office / residential living room / hotel lobby / café / gallery].\nGroup: [GROUP: e.g. 2 colleagues in conversation / a family relaxing / 3 people working at desks / visitors browsing a gallery].\nStyle: [RENDERING STYLE: e.g. photorealistic / architectural sketch style / editorial photography].\nMood: [MOOD: e.g. relaxed and natural / professional / social and lively].\nIntegrate naturally — match lighting, scale, and perspective exactly. Do not alter the architecture.' },
-    { name: 'Lifestyle-Person für Moodboard',
+    { name: '4.6 Lifestyle-Person für Moodboard',
       text: 'Create a lifestyle image of a person that fits the following interior design concept.\nInterior style: [STYLE: e.g. Japandi / Scandinavian minimalism / warm luxury / industrial loft].\nPerson: [PERSON: e.g. young woman in casual linen / man in business casual / creative professional / couple].\nSetting: [SETTING: e.g. reading in an armchair by a window / working at a minimal desk / relaxing on a sofa / in a minimalist kitchen].\nMood: [MOOD: e.g. calm and contemplative / editorial / warm and intimate].\nEditorial photography style, natural light, authentic atmosphere.' },
-    { name: 'Porträt aufwerten',
+    { name: '4.7 Porträt aufwerten',
       text: 'Enhance and retouch this portrait photograph professionally.\nImprovements: [IMPROVEMENTS: e.g. improve skin tone and lighting / enhance sharpness and detail / professional colour grading / remove distracting elements].\nNew background: [BACKGROUND: e.g. clean white studio / soft grey gradient / blurred architectural interior / neutral warm tone].\nLighting: [LIGHTING: e.g. natural soft daylight / professional studio lighting / warm ambient].\nMaintain a natural, authentic look — no over-retouching. High quality portrait photography result.' },
-    { name: 'Hintergrund entfernen / ersetzen',
+    { name: '4.8 Hintergrund entfernen / ersetzen',
       text: 'Remove the existing background from this portrait or person photo and replace it with a clean, neutral background.\nNew background: [BACKGROUND: e.g. pure white / light grey gradient / soft warm beige / blurred architectural interior / neutral studio backdrop].\nKeep the person, clothing, and hair with sharp, natural edges — no harsh cutouts.\nSuitable for presentations, documents, and design collages.' },
-    { name: 'Person als Architektur-Skizze',
+    { name: '4.9 Person als Architektur-Skizze',
       text: 'Convert this photo of a person into an architectural drawing or sketch style figure.\nStyle: [DRAWING STYLE: e.g. precise ink line drawing / watercolour wash with pencil contour / bold black marker sketch / light pencil hatching].\nDetail level: [DETAIL: e.g. detailed face and clothing / simplified silhouette with minimal detail / abstract gestural figure].\nBackground: [BACKGROUND: e.g. pure white / light cream paper texture / simple grey wash].\nSuitable for architectural presentations, collages, and hand-drawn render styles.' }
   ]},
-  { cat: '🎨 Stimmung & Stil', items: [
-    { name: 'Architekturstil übertragen',
+  { cat: '5 Stimmung & Stil', items: [
+    { name: '5.1 Architekturstil übertragen',
       text: 'Transform the architectural and interior style of this image to [TARGET STYLE: e.g. Japandi / Wabi-Sabi / Art Deco / Bauhaus / Tropical Modernism / Nordic brutalism].\nKey characteristics to apply: [STYLE FEATURES: e.g. natural materials, muted earth tones, clean horizontal lines, integration of indoor plants].\nMaintain the same spatial composition, room layout, proportions, and camera angle unchanged.' },
-    { name: 'Mood Board',
+    { name: '5.2 Mood Board',
       text: 'Create a cohesive interior design mood board for a [ROOM TYPE: e.g. private apartment / boutique hotel lobby / high-end restaurant].\nStyle direction: [STYLE DIRECTION: e.g. warm minimalism / eclectic luxury / biophilic / industrial].\nColour palette: [COLOUR PALETTE: e.g. warm sand, muted sage, deep charcoal, soft terracotta accents].\nMaterials and textures: [MATERIALS: e.g. linen, honed marble, smoked oak, hand-woven rattan, brushed brass].\nMood: [ATMOSPHERE: e.g. calm and restorative / vibrant and layered / timeless and understated].\nProfessional layout, clean composition.' },
-    { name: 'Linienzeichnung / Line Drawing',
+    { name: '5.3 Linienzeichnung / Line Drawing',
       text: 'Transform this image into a clean architectural line drawing.\nStyle: [DRAWING STYLE: e.g. precise technical ink lines / bold graphic lines / delicate fine lines / architectural construction lines].\nLine weight: [LINES: e.g. single weight uniform / varied weights with visual hierarchy / thick outline with thin infill].\nDetail: [DETAIL: e.g. minimal abstraction / medium architectural detail / highly detailed].\nBackground: [BACKGROUND: e.g. pure white / warm cream paper / light grey].\nNo shading, no fills — clean line work only.' },
-    { name: 'Bleistiftskizze / Pencil Sketch',
+    { name: '5.4 Bleistiftskizze / Pencil Sketch',
       text: 'Transform this image into a hand-drawn pencil sketch.\nStyle: [STYLE: e.g. loose gestural study / careful observational drawing / architectural presentation sketch / quick concept sketch].\nShading: [SHADING: e.g. light hatching / cross-hatching / soft tonal shading / minimal shading].\nPaper: [PAPER: e.g. clean white / warm cream / sketchbook texture].\nFinish: [FINISH: e.g. rough and gestural / medium finished / polished presentation drawing].\nHand-drawn quality, natural line variation.' },
-    { name: 'Aquarellrender / Watercolour Render',
+    { name: '5.5 Aquarellrender / Watercolour Render',
       text: 'Transform this architectural or interior image into a watercolour render.\nStyle: [STYLE: e.g. loose and expressive / tight and controlled / editorial / classical architectural watercolour].\nPalette: [PALETTE: e.g. warm earth tones / cool blues and greys / vibrant / monochrome wash].\nPaper: [PAPER: e.g. white with visible texture / wet-on-wet soft edges / dry brush with detail].\nInclude: [ELEMENTS: e.g. loose entourage and people / minimal — architecture only / lush plants and atmosphere].\nWatercolour on paper — visible brushstrokes, natural colour bleeds, white paper showing through.' },
-    { name: 'Axonometrie / Isometrie',
+    { name: '5.6 Axonometrie / Isometrie',
       text: 'Generate an axonometric architectural drawing of this space or object.\nProjection: [PROJECTION: e.g. isometric 30/30° / dimetric 45° bird\'s eye / top-down axonometric plan view].\nStyle: [DRAWING STYLE: e.g. clean line drawing / coloured flat surfaces / watercolour wash with line / technical ink with shading].\nContent: [CONTENT: e.g. room with furniture / building exterior / furniture piece / urban block].\nDetail: [DETAIL: e.g. schematic and abstract / medium architectural detail / fully detailed with materials].\nBackground: [BACKGROUND: e.g. pure white / light grid / transparent].\nParallel projection — no perspective, all lines remain parallel.' }
   ]},
-  { cat: '🔧 Optimierung', items: [
-    { name: 'Raum aufräumen / Staging',
+  { cat: '6 Optimierung', items: [
+    { name: '6.1 Raum aufräumen / Staging',
       text: 'Clean up and declutter this interior photo — remove all small objects and distracting elements, leaving only the essential furniture and architecture.\nRemove: [REMOVE: e.g. all items on surfaces (books, cups, papers) / personal belongings and clutter / people and figures / rubbish and temporary objects / cables and technical equipment].\nKeep: [KEEP: e.g. all furniture and built-in elements / large plants / architectural features / lighting fixtures].\nDo not alter the architecture, materials, spatial proportions, lighting, or camera angle in any way.\nResult: a clean, professionally staged interior — ready for presentation or architectural documentation.' },
-    { name: 'Render-Qualität verbessern — Architektur',
+    { name: '6.2 Render-Qualität verbessern — Architektur',
       text: 'Improve the photographic and render quality of this architectural image while keeping the building, landscape, and composition exactly as they are.\nEnhance: [ENHANCE: e.g. improve lighting realism (soft shadows, ambient occlusion) / sharpen materials and surface textures / add photorealistic sky and atmosphere / improve depth and spatial clarity / professional architectural photography colour grading].\nMood: [MOOD: e.g. bright and sharp / warm golden hour / cool overcast professional].\nDo not change the building, architecture, landscape, proportions, or camera angle in any way.\nResult: a higher-quality, more photorealistic version of the same image.' },
-    { name: 'Render-Qualität verbessern — Interieur',
+    { name: '6.3 Render-Qualität verbessern — Interieur',
       text: 'Improve the photographic and render quality of this interior image while keeping the room, furniture, and layout exactly as they are.\nEnhance: [ENHANCE: e.g. improve lighting realism (soft shadows, natural daylight) / sharpen material textures and reflections / refine colour grading and atmosphere / add photorealistic depth of field / improve specular highlights on surfaces].\nMood: [MOOD: e.g. warm and inviting / bright and airy / dramatic and moody / editorial clean].\nDo not alter the architecture, furniture placement, materials, or camera angle in any way.\nResult: a higher-quality, more photorealistic version of the same interior.' },
-    { name: 'Render-Qualität verbessern — Objekt / Produkt',
+    { name: '6.4 Render-Qualität verbessern — Objekt / Produkt',
       text: 'Improve the render quality and photographic realism of this 3D object or product image while keeping the design and geometry exactly as they are.\nEnhance: [ENHANCE: e.g. improve material realism (reflections, surface texture) / refine studio lighting and shadows / sharpen detail and surface finish / professional product photography colour grading].\nMaterial focus: [MATERIAL: e.g. enhance wood grain and natural texture / improve metal reflections and gloss / refine ceramic glaze and finish].\nDo not change the object\'s design, geometry, proportions, or camera angle.\nResult: a higher-quality, more photorealistic product visualisation.' }
   ]},
-  { cat: '✂️ Details & Collage', items: [
-    { name: 'Entourage hinzufügen (Personen, Pflanzen, Fahrzeuge)',
+  { cat: '7 Details & Collage', items: [
+    { name: '7.1 Entourage hinzufügen (Personen, Pflanzen, Fahrzeuge)',
       text: 'Add [ENTOURAGE: e.g. people walking and sitting / parked cars and cyclists / mature trees and planted borders / outdoor furniture and umbrellas] to this architectural image.\nPhotorealistic, architecturally correct scale and proportion.\nIntegrate naturally into the existing scene — maintain the original lighting, shadows, materials, and camera perspective without any changes.' },
-    { name: 'Entourage einkomponieren — 2 Bilder (Compositing)',
+    { name: '7.2 Entourage einkomponieren — 2 Bilder (Compositing)',
       text: 'Image 1 is my architectural render. Image 2 contains [CONTENT: e.g. people / plants / trees / a car] to be composited into it.\nPlace the [CONTENT: e.g. people / plants] from Image 2 into Image 1.\nApply the exact lighting, shadows, and colour grading of Image 1 to all newly added elements — they must appear as if they were always part of the original scene.\nDo not remove or replace any existing elements in Image 1.\nScale all added elements correctly to match the architectural proportions and perspective of Image 1.' },
-    { name: 'Cutout für Architekturcollage',
+    { name: '7.3 Cutout für Architekturcollage',
       text: 'Create a high-quality architectural cutout of [SUBJECT: e.g. a standing person in casual clothing / a mature tree in full leaf / a parked car, side view / an indoor plant in a ceramic pot].\nStyle: [RENDERING STYLE: e.g. photorealistic / architectural watercolour / black ink line drawing].\nBackground: pure white, clean edges, suitable for collage use.\nArchitecturally correct scale and proportions.' },
-    { name: 'Materialcollage erstellen',
+    { name: '7.4 Materialcollage erstellen',
       text: 'Create a photorealistic material sample board / mood board collage.\nMaterials to include: [MATERIAL 1: e.g. honed Carrara marble slab], [MATERIAL 2: e.g. brushed brass sheet], [MATERIAL 3: e.g. smoked oak veneer], [MATERIAL 4: e.g. raw concrete panel], [MATERIAL 5: e.g. woven natural linen fabric].\nArrangement: [ARRANGEMENT: e.g. overlapping samples at different angles / clean flat-lay grid / section-style stacked layout].\nBackground: [BACKGROUND: e.g. pure white / warm grey linen / dark slate].\nStyle: [RENDERING STYLE: e.g. photorealistic studio photography / architectural rendering / editorial flat-lay].\nOptional: add a small colour swatch or material label beneath each sample.' },
   ]}
 ];
@@ -1296,7 +1296,8 @@ var S = {
   busy: false, totalImages: 0, totalCost: 0,
   lbUrl: '', lbPrompt: '',
   inputImages: [],
-  sysCtx: 'off', personGen: false
+  sysCtx: 'off', personGen: false,
+  lastTemplate: ''
 };
 
 /* ── HELPERS ── */
@@ -2267,7 +2268,9 @@ function initTemplates() {
   q('#tmpl-list').addEventListener('click', function(e) {
     var item = e.target.closest('.tmpl-item');
     if (!item) return;
-    insertTemplate(TEMPLATES[parseInt(item.dataset.cat)].items[parseInt(item.dataset.idx)].text);
+    var tpl = TEMPLATES[parseInt(item.dataset.cat)].items[parseInt(item.dataset.idx)];
+    S.lastTemplate = (tpl.name.match(/^[\d.]+/) || [''])[0].replace('.', '-');
+    insertTemplate(tpl.text);
   });
   panel.querySelector('.tmpl-close-x').addEventListener('click', closeTmplPanel);
   panel.querySelector('#tmpl-pdf-btn').addEventListener('click', function(e) { e.stopPropagation(); downloadTemplatesPDF(); });
@@ -2415,9 +2418,10 @@ var DOWNLOAD_CTR = 0;
 function makeFilename(seed) {
   DOWNLOAD_CTR++;
   var g   = (S.gruppe || 'KI').replace(/[^a-zA-Z0-9]/g, '');
+  var t   = S.lastTemplate ? S.lastTemplate + '_' : '';
   var s   = (seed !== null && seed !== undefined) ? String(seed) : '0';
   var num = String(DOWNLOAD_CTR).padStart(2, '0');
-  return g + '_' + s + '_' + num + '.png';
+  return g + '_' + t + s + '_' + num + '.png';
 }
 
 /* ── DOWNLOAD / COPY ── */
