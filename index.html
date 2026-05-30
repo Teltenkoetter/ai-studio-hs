@@ -669,12 +669,12 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         </div>
 
         <div class="pgrp" id="grp-think">
-          <div class="pgrp-lbl" id="lbl-thinking"><span data-i18n="lbl-thinking">Thinking-Level</span> <span id="thinking-note" data-i18n="thinking-note" style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— mehr = besser &amp; langsamer</span></div>
+          <div class="pgrp-lbl" id="lbl-thinking"><span data-i18n="lbl-thinking">Thinking-Level</span> <span id="thinking-note" data-i18n="thinking-note" style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— langsamer &amp; teurer, Effekt bei Bildern begrenzt</span></div>
           <div class="seg" id="seg-think">
-            <button class="seg-btn on" data-v="0" data-i18n="btn-off" title="Kein Thinking — schnell, günstig">Aus</button>
-            <button class="seg-btn" data-v="1024" data-i18n="btn-low" title="1024 Thinking-Tokens — leicht besser, minimal langsamer">Niedrig</button>
-            <button class="seg-btn" data-v="8192" data-i18n="btn-med" title="8192 Thinking-Tokens — deutlich bessere Bildqualität und Komposition">Mittel</button>
-            <button class="seg-btn" data-v="24576" data-i18n="btn-high" title="24576 Thinking-Tokens — maximale Qualität, deutlich langsamer und teurer">Hoch</button>
+            <button class="seg-btn on" data-v="0" data-i18n="btn-off" title="Kein Thinking — schnell und günstig">Aus</button>
+            <button class="seg-btn" data-v="1024" data-i18n="btn-low" title="1024 Thinking-Tokens — minimaler Effekt, kaum spürbar">Niedrig</button>
+            <button class="seg-btn" data-v="8192" data-i18n="btn-med" title="8192 Thinking-Tokens — etwas mehr Aufwand bei der Prompt-Interpretation, kein garantierter Qualitätssprung">Mittel</button>
+            <button class="seg-btn" data-v="24576" data-i18n="btn-high" title="24576 Thinking-Tokens — deutlich teurer, Effekt auf Bildqualität unsicher">Hoch</button>
           </div>
         </div>
 
@@ -883,7 +883,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
           <li><strong>Ausgabe: Bild &amp; Text</strong> — Gemini liefert das Bild + einen kurzen Kommentar zur Interpretation. Hilfreich für Feedback.</li>
           <li><strong>Ausgabe: Nur Bilder</strong> — nur das Bild, kein Text. Schneller, kompakter.</li>
           <li><strong>Temperatur 0–2</strong> — 0 = präzise &amp; deterministisch · 1 = ausgewogen (Standard) · 2 = maximal kreativ &amp; zufällig</li>
-          <li><strong>Thinking-Level</strong> — lässt Gemini länger „nachdenken" vor dem Zeichnen. Mehr = bessere Qualität, aber langsamer &amp; teurer. PIN-geschützt.</li>
+          <li><strong>Thinking-Level</strong> — lässt Gemini länger über den Prompt nachdenken. Effekt auf Bildqualität ist begrenzt; langsamer und teurer. PIN-geschützt für Kurs-Logins.</li>
           <li><strong>System-Kontext</strong> — unsichtbarer Hintergrundprompt: „Aus" = freie Hand · „Expert" = photorealistisch, geometrisch präzise · „Graustufen" = Schwarz-Weiß</li>
           <li><strong>Auflösung</strong> — Gemini: aktuell nur <strong>1K</strong> (~1024 px); 2K/4K in Vorbereitung. Imagen Standard/Ultra: 1K oder <strong>2K</strong> wählbar. Imagen Fast: immer 1K.</li>
         </ul>
@@ -969,7 +969,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
           <li><strong>Output: Image &amp; Text</strong> — Gemini returns the image + a short comment. Useful for feedback and explanations.</li>
           <li><strong>Output: Image only</strong> — just the image, no text. Faster, less distraction.</li>
           <li><strong>Temperature 0–2</strong> — 0 = precise &amp; deterministic · 1 = balanced (default) · 2 = maximally creative &amp; random</li>
-          <li><strong>Thinking Level</strong> — lets Gemini "think" longer before drawing. More = better quality, slower &amp; more expensive. PIN-protected.</li>
+          <li><strong>Thinking Level</strong> — lets Gemini think longer about the prompt. Effect on image quality is limited; slower and more expensive. PIN-protected for course logins.</li>
           <li><strong>System Context</strong> — invisible background prompt: "Off" = free rein · "Expert" = photorealistic, geometrically precise · "Grayscale" = black &amp; white only</li>
           <li><strong>Resolution</strong> — Gemini: currently only <strong>1K</strong> (~1024 px); 2K/4K coming soon. Imagen Standard/Ultra: 1K or <strong>2K</strong>. Imagen Fast: always 1K.</li>
         </ul>
@@ -1089,7 +1089,7 @@ var I18N = {
     'btn-off':            'Aus',
     'btn-grey':           'Graustufen',
     'lbl-thinking':       'Thinking-Level',
-    'thinking-note':      '— mehr = besser & langsamer',
+    'thinking-note':      '— langsamer & teurer, Effekt bei Bildern begrenzt',
     'btn-low':            'Niedrig',
     'btn-med':            'Mittel',
     'btn-high':           'Hoch',
@@ -1124,7 +1124,7 @@ var I18N = {
     'btn-off':            'Off',
     'btn-grey':           'Grayscale',
     'lbl-thinking':       'Thinking Level',
-    'thinking-note':      '— more = better & slower',
+    'thinking-note':      '— slower & more expensive, limited effect on images',
     'btn-low':            'Low',
     'btn-med':            'Medium',
     'btn-high':           'High',
@@ -1516,6 +1516,9 @@ function initPinModal() {
     var v = parseInt(btn.dataset.v);
     if (v === 0) return; /* "Aus" — always allowed */
     if (sessionStorage.getItem('nb_pinok') === '1') return; /* already unlocked */
+    if (S.gruppe === 'Klaus') return; /* Klaus login — no PIN needed */
+    /* own API key login: not workshop, not free → no PIN needed */
+    if (sessionStorage.getItem('nb_workshop') !== '1' && sessionStorage.getItem('nb_free') !== '1') return;
     /* Block: show PIN modal */
     e.stopImmediatePropagation();
     pendingThinkVal = v;
