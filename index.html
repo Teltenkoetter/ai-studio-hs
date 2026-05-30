@@ -246,7 +246,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
   border: none; background: transparent; text-align: center;
   display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 3px; line-height: 1.2;
 }
-.seg-btn.on { background: var(--accent); color: var(--acc-txt); font-weight: 700; }
+.seg-btn.on { background: #d8d8d8; color: var(--acc-txt); font-weight: 700; }
 .seg-btn:not(.on):hover { background: var(--s4); color: var(--text); }
 
 .rb { border: 1.5px solid currentColor; border-radius: 1px; display: block; opacity: 0.75; }
@@ -608,7 +608,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 
     </div>
     <div style="margin-top:20px;text-align:center;font-size:11px;color:var(--dim);line-height:1.8;">
-      v1.1 · Build Mai 2026<br>Klaus Teltenkötter
+      Optimiert für Laptop und Tablet · nicht für Smartphone<br>
+      v1.1 · Build Mai 2026 · Klaus Teltenkötter
     </div>
   </div>
 </div>
@@ -870,7 +871,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Schnellstart</h3>
         <ul>
           <li><strong>Prompt eingeben</strong> — Beschreibe dein Bild. Englisch für Stilbegriffe empfohlen, Deutsch funktioniert auch.</li>
-          <li><strong>📋 Vorlagen</strong> — 37 Prompts in 6 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
+          <li><strong>📋 Vorlagen</strong> — 40 Prompts in 7 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
           <li><strong>✨</strong> — Prompt automatisch mit KI verbessern und ausformulieren</li>
           <li><strong>✕</strong> — Prompt-Feld leeren</li>
           <li><strong>⚡ Generieren</strong> klicken oder <strong>Strg+Enter</strong></li>
@@ -955,7 +956,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Quick Start</h3>
         <ul>
           <li><strong>Enter a prompt</strong> — Describe your image. English recommended for style terms, German works too.</li>
-          <li><strong>📋 Templates</strong> — 37 prompts in 6 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
+          <li><strong>📋 Templates</strong> — 40 prompts in 7 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
           <li><strong>✨</strong> — Auto-improve and expand the prompt using AI</li>
           <li><strong>✕</strong> — Clear the prompt field</li>
           <li>Click <strong>⚡ Generate</strong> or press <strong>Ctrl+Enter</strong></li>
@@ -1232,7 +1233,9 @@ var TEMPLATES = [
     { name: 'Rohbauphase / Reverse Engineering',
       text: 'Generate a version of this image showing the building during shell construction phase.\nConstruction stage: [CONSTRUCTION STAGE: e.g. concrete foundation and rising walls / steel frame structure / masonry shell without windows].\nShow construction machinery, building materials, and scaffolding scattered around the site.\nThe surroundings, trees, and landscape should remain the same as in the original image.\nWeather: [WEATHER: e.g. overcast and rainy / bright working day with blue sky].' },
     { name: 'Jahreszeit & Wetter wechseln',
-      text: 'Change only the season, weather, and sky in this image.\nNew condition: [SEASON & WEATHER: e.g. winter with snow on the ground, bare trees, low cold sun / summer with lush foliage, deep blue sky, hard shadows / autumn with warm coloured leaves, overcast soft light].\nDo not alter the building, architecture, materials, or landscape structure in any way. Only seasonal vegetation, sky, weather effects, and ground covering should change.' }
+      text: 'Change only the season, weather, and sky in this image.\nNew condition: [SEASON & WEATHER: e.g. winter with snow on the ground, bare trees, low cold sun / summer with lush foliage, deep blue sky, hard shadows / autumn with warm coloured leaves, overcast soft light].\nDo not alter the building, architecture, materials, or landscape structure in any way. Only seasonal vegetation, sky, weather effects, and ground covering should change.' },
+    { name: 'Grundriss / Lageplan → Render',
+      text: 'Transform this [DRAWING: e.g. floor plan / site plan / section drawing] into a photorealistic architectural render.\nView: [VIEW: e.g. interior perspective / aerial bird\'s eye view / street-level exterior].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary residential / warm Scandinavian / commercial modern].\nMaterials: [MATERIALS: e.g. concrete, glass, timber, planted green surfaces].\nTime of day: [TIME OF DAY: e.g. bright daylight / late afternoon golden light].\nCamera: [PERSPECTIVE: e.g. wide-angle 28mm at eye level / aerial drone view, straight down].' }
   ]},
   { cat: '🏠 Innenarchitektur', items: [
     { name: 'Leeren Raum einrichten',
@@ -1247,8 +1250,8 @@ var TEMPLATES = [
       text: 'Take this image of a furnished room and make ONLY these specific changes: [EDIT: e.g. replace the coffee table with a modern travertine stone one / change the wall colour to deep olive green / swap the pendant light for a sculptural brass fixture / add a large-format art print above the sofa].\nDo NOT alter any other furniture, layout, lighting, colours, architecture, proportions, or camera angle.\nKeep every unchanged element exactly as it appears in the original image.' },
     { name: 'Kamera & Perspektive setzen',
       text: 'Render this [ROOM: e.g. living room / office / dining area] from the following camera position:\nPerspective: [PERSPECTIVE: e.g. one-point central perspective facing the main wall / two-point corner perspective].\nCamera height: [CAMERA HEIGHT: e.g. eye level at 1.60m / low angle at 0.80m / elevated at 2.50m].\nFocal length: [FOCAL LENGTH: e.g. wide-angle 24mm / standard 35mm / slight tele 50mm].\nStyle: architectural photography, vertical lines perfectly straight, no lens distortion, natural daylight.\nDo not change anything about the architecture, materials, or interior — only the camera position.' },
-    { name: 'Raum aufräumen / Staging',
-      text: 'Clean up and declutter this interior photo — remove all small objects and distracting elements, leaving only the essential furniture and architecture.\nRemove: [REMOVE: e.g. all items on surfaces (books, cups, papers) / personal belongings and clutter / people and figures / rubbish and temporary objects / cables and technical equipment].\nKeep: [KEEP: e.g. all furniture and built-in elements / large plants / architectural features / lighting fixtures].\nDo not alter the architecture, materials, spatial proportions, lighting, or camera angle in any way.\nResult: a clean, professionally staged interior — ready for presentation or architectural documentation.' },
+    { name: 'Ausstellungsstand / Showroom',
+      text: 'Create a photorealistic image of a [USE TYPE: e.g. trade show booth / brand showroom / retail space] for [BRAND / THEME: e.g. a furniture brand / architecture office / tech company].\nStyle: [STYLE: e.g. Scandinavian minimalist / raw industrial / high-end luxury].\nPrimary materials and colours: [MATERIALS & COLOURS: e.g. blackened steel, light oak, matte white surfaces, brand colour accents].\nKey spatial elements: [SPATIAL ELEMENTS: e.g. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting].\nSetting: [SETTING: e.g. dark trade show hall with polished concrete floor / bright white gallery space].\nInclude [PEOPLE: e.g. visitors and staff naturally interacting / no people].' },
     { name: 'Licht & Stimmung wechseln',
       text: 'Change only the lighting and atmosphere in this interior image.\nNew lighting: [LIGHTING: e.g. warm evening light with indirect wall sconces / bright overcast midday / golden hour low sun casting long shadows].\nSeason / time of day: [SEASON: e.g. summer afternoon / winter dusk / late evening].\nDo not alter the geometry, materials, furniture, or camera angle in any way. Only lighting and mood should change.' }
   ]},
@@ -1285,10 +1288,18 @@ var TEMPLATES = [
   { cat: '🎨 Stimmung & Stil', items: [
     { name: 'Architekturstil übertragen',
       text: 'Transform the architectural and interior style of this image to [TARGET STYLE: e.g. Japandi / Wabi-Sabi / Art Deco / Bauhaus / Tropical Modernism / Nordic brutalism].\nKey characteristics to apply: [STYLE FEATURES: e.g. natural materials, muted earth tones, clean horizontal lines, integration of indoor plants].\nMaintain the same spatial composition, room layout, proportions, and camera angle unchanged.' },
-    { name: 'Ausstellungsstand / Showroom',
-      text: 'Create a photorealistic image of a [USE TYPE: e.g. trade show booth / brand showroom / retail space] for [BRAND / THEME: e.g. a furniture brand / architecture office / tech company].\nStyle: [STYLE: e.g. Scandinavian minimalist / raw industrial / high-end luxury].\nPrimary materials and colours: [MATERIALS & COLOURS: e.g. blackened steel, light oak, matte white surfaces, brand colour accents].\nKey spatial elements: [SPATIAL ELEMENTS: e.g. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting].\nSetting: [SETTING: e.g. dark trade show hall with polished concrete floor / bright white gallery space].\nInclude [PEOPLE: e.g. visitors and staff naturally interacting / no people].' },
     { name: 'Mood Board',
       text: 'Create a cohesive interior design mood board for a [ROOM TYPE: e.g. private apartment / boutique hotel lobby / high-end restaurant].\nStyle direction: [STYLE DIRECTION: e.g. warm minimalism / eclectic luxury / biophilic / industrial].\nColour palette: [COLOUR PALETTE: e.g. warm sand, muted sage, deep charcoal, soft terracotta accents].\nMaterials and textures: [MATERIALS: e.g. linen, honed marble, smoked oak, hand-woven rattan, brushed brass].\nMood: [ATMOSPHERE: e.g. calm and restorative / vibrant and layered / timeless and understated].\nProfessional layout, clean composition.' }
+  ]},
+  { cat: '🔧 Optimierung', items: [
+    { name: 'Raum aufräumen / Staging',
+      text: 'Clean up and declutter this interior photo — remove all small objects and distracting elements, leaving only the essential furniture and architecture.\nRemove: [REMOVE: e.g. all items on surfaces (books, cups, papers) / personal belongings and clutter / people and figures / rubbish and temporary objects / cables and technical equipment].\nKeep: [KEEP: e.g. all furniture and built-in elements / large plants / architectural features / lighting fixtures].\nDo not alter the architecture, materials, spatial proportions, lighting, or camera angle in any way.\nResult: a clean, professionally staged interior — ready for presentation or architectural documentation.' },
+    { name: 'Render-Qualität verbessern — Architektur',
+      text: 'Improve the photographic and render quality of this architectural image while keeping the building, landscape, and composition exactly as they are.\nEnhance: [ENHANCE: e.g. improve lighting realism (soft shadows, ambient occlusion) / sharpen materials and surface textures / add photorealistic sky and atmosphere / improve depth and spatial clarity / professional architectural photography colour grading].\nMood: [MOOD: e.g. bright and sharp / warm golden hour / cool overcast professional].\nDo not change the building, architecture, landscape, proportions, or camera angle in any way.\nResult: a higher-quality, more photorealistic version of the same image.' },
+    { name: 'Render-Qualität verbessern — Interieur',
+      text: 'Improve the photographic and render quality of this interior image while keeping the room, furniture, and layout exactly as they are.\nEnhance: [ENHANCE: e.g. improve lighting realism (soft shadows, natural daylight) / sharpen material textures and reflections / refine colour grading and atmosphere / add photorealistic depth of field / improve specular highlights on surfaces].\nMood: [MOOD: e.g. warm and inviting / bright and airy / dramatic and moody / editorial clean].\nDo not alter the architecture, furniture placement, materials, or camera angle in any way.\nResult: a higher-quality, more photorealistic version of the same interior.' },
+    { name: 'Render-Qualität verbessern — Objekt / Produkt',
+      text: 'Improve the render quality and photographic realism of this 3D object or product image while keeping the design and geometry exactly as they are.\nEnhance: [ENHANCE: e.g. improve material realism (reflections, surface texture) / refine studio lighting and shadows / sharpen detail and surface finish / professional product photography colour grading].\nMaterial focus: [MATERIAL: e.g. enhance wood grain and natural texture / improve metal reflections and gloss / refine ceramic glaze and finish].\nDo not change the object\'s design, geometry, proportions, or camera angle.\nResult: a higher-quality, more photorealistic product visualisation.' }
   ]},
   { cat: '✂️ Details & Collage', items: [
     { name: 'Entourage hinzufügen (Personen, Pflanzen, Fahrzeuge)',
@@ -1299,14 +1310,12 @@ var TEMPLATES = [
       text: 'Create a high-quality architectural cutout of [SUBJECT: e.g. a standing person in casual clothing / a mature tree in full leaf / a parked car, side view / an indoor plant in a ceramic pot].\nStyle: [RENDERING STYLE: e.g. photorealistic / architectural watercolour / black ink line drawing].\nBackground: pure white, clean edges, suitable for collage use.\nArchitecturally correct scale and proportions.' },
     { name: 'Materialcollage erstellen',
       text: 'Create a photorealistic material sample board / mood board collage.\nMaterials to include: [MATERIAL 1: e.g. honed Carrara marble slab], [MATERIAL 2: e.g. brushed brass sheet], [MATERIAL 3: e.g. smoked oak veneer], [MATERIAL 4: e.g. raw concrete panel], [MATERIAL 5: e.g. woven natural linen fabric].\nArrangement: [ARRANGEMENT: e.g. overlapping samples at different angles / clean flat-lay grid / section-style stacked layout].\nBackground: [BACKGROUND: e.g. pure white / warm grey linen / dark slate].\nStyle: [RENDERING STYLE: e.g. photorealistic studio photography / architectural rendering / editorial flat-lay].\nOptional: add a small colour swatch or material label beneath each sample.' },
-    { name: 'Grundriss / Lageplan → Render',
-      text: 'Transform this [DRAWING: e.g. floor plan / site plan / section drawing] into a photorealistic architectural render.\nView: [VIEW: e.g. interior perspective / aerial bird\'s eye view / street-level exterior].\nStyle: [ARCHITECTURAL STYLE: e.g. contemporary residential / warm Scandinavian / commercial modern].\nMaterials: [MATERIALS: e.g. concrete, glass, timber, planted green surfaces].\nTime of day: [TIME OF DAY: e.g. bright daylight / late afternoon golden light].\nCamera: [PERSPECTIVE: e.g. wide-angle 28mm at eye level / aerial drone view, straight down].' }
   ]}
 ];
 
 /* ── STATE ── */
 var S = {
-  key: '', name: 'Anonym', hfKey: '', gruppe: '',
+  key: '', name: 'Anonym', hfKey: '', gruppe: '', lbSeed: null,
   model: 'gemini-2.5-flash-image',
   temp: 1.0, thinking: 0,
   ratio: '1:1', count: 1, imageSize: '1K',
@@ -1838,7 +1847,7 @@ function initUIEvents() {
   q('#btn-clear-history').addEventListener('click', clearHistory);
   q('#lb-bg').addEventListener('click', closeLightbox);
   q('#lb-close').addEventListener('click', closeLightbox);
-  q('#lb-dl').addEventListener('click', function() { doDownload(S.lbUrl, S.lbPrompt); });
+  q('#lb-dl').addEventListener('click', function() { doDownload(S.lbUrl, S.lbPrompt, S.lbSeed); });
   q('#lb-copy').addEventListener('click', function() { copyText(S.lbPrompt); });
   q('#lb-use').addEventListener('click', function() {
     var b64 = S.lbUrl.split(',')[1];
@@ -1893,8 +1902,9 @@ function generate() {
     loading.remove();
     var grid = document.createElement('div');
     grid.className = 'img-grid' + (images.length === 1 ? ' single' : '');
+    var usedSysCtx = S.sysCtx;
     images.forEach(function(b64) {
-      grid.appendChild(makeImageCard(b64, text, elapsed, cost, inputCount, false, usedSeed));
+      grid.appendChild(makeImageCard(b64, text, elapsed, cost, inputCount, false, usedSeed, usedSysCtx));
       S.totalImages++;
       S.totalCost += cost;
       saveToHistory(b64, text, S.model, cost, inputCount);
@@ -2070,7 +2080,7 @@ function makeLoadingCard() {
   return d;
 }
 
-function makeImageCard(b64, prompt, elapsed, cost, inputCount, isHistory, seed) {
+function makeImageCard(b64, prompt, elapsed, cost, inputCount, isHistory, seed, sysCtx) {
   var url   = 'data:image/png;base64,' + b64;
   var model = isHistory ? '' : S.model;
   var now   = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
@@ -2083,6 +2093,8 @@ function makeImageCard(b64, prompt, elapsed, cost, inputCount, isHistory, seed) 
   var elapsTag  = elapsed ? '<span class="tag">' + elapsed + 's</span>' : '';
   var costTag   = cost ? '<span class="tag">' + cost.toFixed(3).replace('.', ',') + ' €</span>' : '';
   var seedTag   = (seed !== null && seed !== undefined) ? '<span class="tag tag-seed" data-act="copy-seed" data-seed="' + seed + '" title="Klicken zum Kopieren">🎲 ' + seed + '</span>' : '';
+  var ctxLabel  = sysCtx === 'expert' ? 'Exp.' : (sysCtx === 'grey' ? 'Graust.' : '');
+  var ctxTag    = ctxLabel ? '<span class="tag">' + ctxLabel + '</span>' : '';
 
   card.innerHTML =
     '<div class="img-wrap">' +
@@ -2096,19 +2108,19 @@ function makeImageCard(b64, prompt, elapsed, cost, inputCount, isHistory, seed) 
     '</div>' +
     '<div class="img-meta">' +
       '<span class="img-prompt">' + esc(clip(prompt, 80)) + '</span>' +
-      '<div class="img-tags">' + histTag + modelTag + inputTag + timeTag + elapsTag + costTag + seedTag + '</div>' +
+      '<div class="img-tags">' + histTag + modelTag + ctxTag + inputTag + timeTag + elapsTag + costTag + seedTag + '</div>' +
     '</div>';
 
   card.querySelector('[data-act="lb"]').addEventListener('click', function(e) { e.stopPropagation(); openLightbox(url, prompt); });
   card.querySelector('[data-act="use"]').addEventListener('click', function(e) { e.stopPropagation(); useAsInput(b64); });
-  card.querySelector('[data-act="dl"]').addEventListener('click', function(e) { e.stopPropagation(); doDownload(url, prompt); });
+  card.querySelector('[data-act="dl"]').addEventListener('click', function(e) { e.stopPropagation(); doDownload(url, prompt, seed); });
   card.querySelector('[data-act="again"]').addEventListener('click', function(e) {
     e.stopPropagation();
     q('#prompt').value = prompt;
     q('#prompt').dispatchEvent(new Event('input'));
     generate();
   });
-  card.querySelector('.img-wrap').addEventListener('click', function() { openLightbox(url, prompt); });
+  card.querySelector('.img-wrap').addEventListener('click', function() { openLightbox(url, prompt, seed); });
   card.addEventListener('contextmenu', function(e) { e.preventDefault(); doDownload(url, prompt); });
   var seedEl = card.querySelector('[data-act="copy-seed"]');
   if (seedEl) {
@@ -2231,8 +2243,8 @@ function clearHistory() {
 }
 
 /* ── LIGHTBOX ── */
-function openLightbox(url, prompt) {
-  S.lbUrl = url; S.lbPrompt = prompt;
+function openLightbox(url, prompt, seed) {
+  S.lbUrl = url; S.lbPrompt = prompt; S.lbSeed = seed !== undefined ? seed : null;
   q('#lb-img').src = url;
   q('#lb-prompt').textContent = prompt;
   q('#lightbox').classList.add('show');
@@ -2248,7 +2260,10 @@ function initTemplates() {
   panel.innerHTML =
     '<div class="tmpl-head">' +
       '<span class="tmpl-head-title">📋 Prompt-Vorlagen</span>' +
-      '<button class="btn btn-ghost tmpl-close-x" style="padding:3px 8px;font-size:12px;line-height:1;">✕</button>' +
+      '<div style="display:flex;gap:4px;">' +
+        '<button class="btn btn-ghost" id="tmpl-pdf-btn" title="Alle Vorlagen als PDF" style="padding:3px 8px;font-size:11px;line-height:1;">↓ PDF</button>' +
+        '<button class="btn btn-ghost tmpl-close-x" style="padding:3px 8px;font-size:12px;line-height:1;">✕</button>' +
+      '</div>' +
     '</div>' +
     '<div class="tmpl-cats" id="tmpl-cats">' + catsHtml + '</div>' +
     '<div class="tmpl-list" id="tmpl-list"></div>';
@@ -2266,6 +2281,7 @@ function initTemplates() {
     insertTemplate(TEMPLATES[parseInt(item.dataset.cat)].items[parseInt(item.dataset.idx)].text);
   });
   panel.querySelector('.tmpl-close-x').addEventListener('click', closeTmplPanel);
+  panel.querySelector('#tmpl-pdf-btn').addEventListener('click', function(e) { e.stopPropagation(); downloadTemplatesPDF(); });
   q('#btn-tmpl').addEventListener('click', function(e) {
     e.stopPropagation();
     panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
@@ -2292,6 +2308,35 @@ function renderTmplItems(catIdx) {
 }
 
 function closeTmplPanel() { q('#tmpl-panel').style.display = 'none'; }
+
+function downloadTemplatesPDF() {
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<title>KI Studio — Prompt-Vorlagen</title>' +
+    '<style>' +
+      'body{font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:11px;color:#111;margin:0;padding:32px 40px;line-height:1.5;}' +
+      'h1{font-size:18px;font-weight:700;margin:0 0 4px;letter-spacing:-0.3px;}' +
+      '.sub{font-size:11px;color:#666;margin-bottom:28px;}' +
+      'h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:#888;margin:24px 0 8px;padding-bottom:4px;border-bottom:1px solid #ddd;}' +
+      '.item{margin-bottom:14px;padding:10px 12px;border:1px solid #e8e8e8;border-radius:6px;break-inside:avoid;}' +
+      '.item-name{font-weight:700;font-size:11px;margin-bottom:5px;}' +
+      '.item-text{font-size:10px;color:#444;white-space:pre-wrap;line-height:1.55;}' +
+      '@media print{body{padding:20px 28px;}h2{margin-top:18px;}}' +
+    '</style></head><body>';
+  html += '<h1><b>KI</b> studio</h1><p class="sub">Prompt-Vorlagen · ' + TEMPLATES.reduce(function(a,c){return a+c.items.length;},0) + ' Vorlagen in ' + TEMPLATES.length + ' Kategorien · KI Studio · Hochschule Mainz</p>';
+  TEMPLATES.forEach(function(cat) {
+    html += '<h2>' + cat.cat + '</h2>';
+    cat.items.forEach(function(item) {
+      html += '<div class="item"><div class="item-name">' + item.name + '</div><div class="item-text">' + item.text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div></div>';
+    });
+  });
+  html += '</body></html>';
+  var win = window.open('', '_blank');
+  if (win) {
+    win.document.write(html);
+    win.document.close();
+    setTimeout(function() { win.print(); }, 400);
+  }
+}
 
 function insertTemplate(text) {
   var ta = q('#prompt');
@@ -2371,10 +2416,11 @@ function improvePrompt() {
 function downloadAll() {
   var imgs = [];
   document.querySelectorAll('#results-body .img-card').forEach(function(card) {
-    var img = card.querySelector('.img-wrap img');
-    var promptEl = card.querySelector('.img-prompt');
+    var img     = card.querySelector('.img-wrap img');
+    var seedEl  = card.querySelector('[data-act="copy-seed"]');
+    var seed    = seedEl ? seedEl.dataset.seed : null;
     if (img && img.src.startsWith('data:')) {
-      imgs.push({ src: img.src, prompt: promptEl ? (promptEl.title || promptEl.textContent) : 'image' });
+      imgs.push({ src: img.src, seed: seed });
     }
   });
   if (!imgs.length) { showToast('Keine Bilder zum Herunterladen'); return; }
@@ -2382,7 +2428,7 @@ function downloadAll() {
     setTimeout(function() {
       var a = document.createElement('a');
       a.href = item.src;
-      a.download = 'ki-studio_' + String(i + 1).padStart(2, '0') + '_' + item.prompt.slice(0, 24).replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.png';
+      a.download = makeFilename(item.seed);
       a.click();
     }, i * 380);
   });
@@ -2398,11 +2444,21 @@ function initHelp() {
 function showHelp() { q('#help-modal').classList.add('show'); }
 function closeHelp() { q('#help-modal').classList.remove('show'); }
 
+/* ── DOWNLOAD COUNTER ── */
+var DOWNLOAD_CTR = 0;
+function makeFilename(seed) {
+  DOWNLOAD_CTR++;
+  var g   = (S.gruppe || 'KI').replace(/[^a-zA-Z0-9]/g, '');
+  var s   = (seed !== null && seed !== undefined) ? String(seed) : '0';
+  var num = String(DOWNLOAD_CTR).padStart(2, '0');
+  return g + '_' + s + '_' + num + '.png';
+}
+
 /* ── DOWNLOAD / COPY ── */
-function doDownload(url, prompt) {
+function doDownload(url, prompt, seed) {
   var a = document.createElement('a');
   a.href = url;
-  a.download = 'ki-studio_' + prompt.slice(0, 30).replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_' + Date.now() + '.png';
+  a.download = makeFilename(seed);
   a.click();
 }
 
