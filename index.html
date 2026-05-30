@@ -1700,7 +1700,8 @@ function applyParamVisibility() {
   var isFlux   = m.startsWith('pollinations');
 
   setOff('grp-output', !isGemini);
-  setOff('grp-temp',   !isGemini);
+  /* Temperatur hat bei Bildgenerierungsmodellen keinen messbaren Effekt → ausblenden */
+  setOff('grp-temp', true);
   setOff('grp-think',  !m.startsWith('gemini-2.5') && !m.startsWith('gemini-3'));
   setOff('grp-count',  !isImagen);
 
