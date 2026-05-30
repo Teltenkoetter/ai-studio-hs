@@ -1,1 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI Studio — Prompt-Galerie</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, Helvetica Neue, Arial, sans-serif;
+    font-size: 12px;
+    color: #111;
+    background: #fff;
+    padding: 40px 48px;
+    line-height: 1.5;
+  }
+  header {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 16px;
+    margin-bottom: 36px;
+  }
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .header-title span { font-weight: 300; }
+  .header-meta {
+    font-size: 11px;
+    font-weight: 300;
+    color: #999;
+    letter-spacing: 0.2px;
+    margin-top: 5px;
+  }
+  .header-sub {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 3px;
+  }
+  .category {
+    margin-bottom: 44px;
+  }
+  .cat-heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #888;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+    break-inside: avoid;
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: #f4f4f4;
+  }
+  .card-body {
+    padding: 9px 11px 10px;
+  }
+  .card-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+  }
+  .card-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.35;
+  }
+  .card-cat {
+    font-size: 10px;
+    font-weight: 300;
+    color: #aaa;
+    margin-top: 2px;
+  }
+  .card-input {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .card-input img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid #e8e8e8;
+  }
+  .card-input-lbl {
+    font-size: 10px;
+    font-weight: 300;
+    color: #bbb;
+  }
+  @media print {
+    body { padding: 20px 28px; }
+    .card { break-inside: avoid; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 20px 16px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
 
+<header>
+  <div class="header-title"><b>KI</b> <span>studio</span></div>
+  <div class="header-meta">Prof. Klaus Teltenkötter &thinsp;|&thinsp; Digitales Entwerfen &thinsp;|&thinsp; Innenarchitektur &thinsp;|&thinsp; Hochschule Mainz</div>
+  <div class="header-sub">Prompt-Galerie &mdash; Beispielbilder zu allen Vorlagen</div>
+</header>
+
+<div id="gallery"></div>
+
+<script>
+// ── BILDER-KONFIGURATION ────────────────────────────────────────────────────
+// Dateinamen der hochgeladenen Beispielbilder.
+// Schlüssel = Vorlagen-Nummer (z.B. '1-1'), Wert = Dateiname im selben Ordner.
+// Leer lassen ('') wenn noch kein Bild vorhanden.
+var IMAGES = {
+  '1-1': { out: 'Klaus_1-1_564288141_01.png',    in:  'Klaus_1-1_564288141_0.png' },
+  '1-2': { out: 'Klaus_1-2_1038302039_02.png' },
+  '1-3': { out: 'Klaus_1-3_1674326917_03.png' },
+  '1-4': { out: 'Klaus_1-4_1156733925_04.png' },
+  '1-5': {},
+  '1-6': { out: 'Klaus_1-6_647940915_05.png' },
+  '1-7': {},
+  '1-8': {},
+  '1-9': { out: 'Klaus_1-9_349226644_06.png',    in:  'Klaus_1-9_349226644_0.png' },
+  '2-1': {}, '2-2': {}, '2-3': {}, '2-4': {},
+  '2-5': {}, '2-6': {}, '2-7': {}, '2-8': {},
+  '3-1': { out: 'Klaus_3-1_1580200322_13.png',   in:  'Klaus_3-1_1580200322_0.png' },
+  '3-2': { out: 'Klaus_3-2_203050911_14.png' },
+  '3-3': {},
+  '3-4': { out: 'Klaus_3-4_1664934438_15.png' },
+  '4-1': {}, '4-2': {}, '4-3': {}, '4-4': {}, '4-5': {},
+  '4-6': {}, '4-7': {}, '4-8': {}, '4-9': {},
+  '5-1': {},
+  '5-2': { out: 'Klaus_5-2_940486422_07.png' },
+  '5-3': { out: 'Klaus_5-3_1210153324_08.png' },
+  '5-4': { out: 'Klaus_5-4_357237794_09.png' },
+  '5-5': { out: 'Klaus_5-5_186394996_10.png' },
+  '5-6': { out: 'Klaus_5-6_1168173000_11.png' },
+  '6-1': {}, '6-2': {}, '6-3': {}, '6-4': {},
+  '7-1': {}, '7-2': {}, '7-3': {},
+  '7-4': { out: 'Klaus_7-4_32677282_12.png' }
+};
+// ────────────────────────────────────────────────────────────────────────────
+
+var TEMPLATES = [
+  { cat: '1 Architektur & Landschaft', items: [
+    '1.1 Neubau aus Skizze / Konzept',
+    '1.2 Fassade überarbeiten',
+    '1.3 Außenraum / Landscaping gestalten',
+    '1.4 Anderen Winkel / Blickrichtung',
+    '1.5 Weißmodell → Fassadenrender',
+    '1.6 Screenshot / 3D-Modell → Render',
+    '1.7 Rohbauphase / Reverse Engineering',
+    '1.8 Jahreszeit & Wetter wechseln',
+    '1.9 Grundriss / Lageplan → Render'
+  ]},
+  { cat: '2 Innenarchitektur', items: [
+    '2.1 Leeren Raum einrichten',
+    '2.2 Weißmodell → Eingerichteter Raum',
+    '2.3 Materialien & Oberflächen tauschen',
+    '2.4 Möblierung ersetzen',
+    '2.5 Einzelnes Element ändern',
+    '2.6 Kamera & Perspektive setzen',
+    '2.7 Ausstellungsstand / Showroom',
+    '2.8 Licht & Stimmung wechseln'
+  ]},
+  { cat: '3 Objekt im Raum', items: [
+    '3.1 3D-Objekt in beschriebene Szene',
+    '3.2 3D-Objekt in hochgeladenes Bild setzen',
+    '3.3 Materialzuweisung auf 3D-Objekt',
+    '3.4 Produktvisualisierung / Studio-Shot'
+  ]},
+  { cat: '4 Personen', items: [
+    '4.1 Weißer Cutout aus Foto',
+    '4.2 Maßstabsfigur generieren',
+    '4.3 Silhouette / Schattenriss',
+    '4.4 Person in Interieur einsetzen',
+    '4.5 Personengruppe im Raum',
+    '4.6 Lifestyle-Person für Moodboard',
+    '4.7 Porträt aufwerten',
+    '4.8 Hintergrund entfernen / ersetzen',
+    '4.9 Person als Architektur-Skizze'
+  ]},
+  { cat: '5 Stimmung & Stil', items: [
+    '5.1 Architekturstil übertragen',
+    '5.2 Mood Board',
+    '5.3 Linienzeichnung / Line Drawing',
+    '5.4 Bleistiftskizze / Pencil Sketch',
+    '5.5 Aquarellrender / Watercolour Render',
+    '5.6 Axonometrie / Isometrie'
+  ]},
+  { cat: '6 Optimierung', items: [
+    '6.1 Raum aufräumen / Staging',
+    '6.2 Render-Qualität verbessern — Architektur',
+    '6.3 Render-Qualität verbessern — Interieur',
+    '6.4 Render-Qualität verbessern — Objekt / Produkt'
+  ]},
+  { cat: '7 Details & Collage', items: [
+    '7.1 Entourage hinzufügen',
+    '7.2 Entourage einkomponieren — 2 Bilder',
+    '7.3 Cutout für Architekturcollage',
+    '7.4 Materialcollage erstellen'
+  ]}
+];
+
+function buildGallery() {
+  var container = document.getElementById('gallery');
+  TEMPLATES.forEach(function(cat) {
+    var section = document.createElement('div');
+    section.className = 'category';
+    var h = document.createElement('div');
+    h.className = 'cat-heading';
+    h.textContent = cat.cat;
+    section.appendChild(h);
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+    cat.items.forEach(function(name) {
+      var num = name.match(/^[\d.]+/)[0].replace('.', '-');
+      var src = IMAGES[num];
+      if (!src || !src.out) return; /* kein Bild → nicht anzeigen */
+      var card = document.createElement('div');
+      card.className = 'card';
+      if (src && src.out) {
+        var img = document.createElement('img');
+        img.className = 'card-img';
+        img.src = src.out;
+        img.alt = name;
+        img.onerror = function() {
+          this.parentNode.replaceChild(makePlaceholder(), this);
+        };
+        card.appendChild(img);
+      }
+      var body = document.createElement('div');
+      body.className = 'card-body';
+      var inputHtml = '';
+      if (src && src.in) {
+        inputHtml = '<div class="card-input">' +
+          '<img src="' + src.in + '" alt="Ausgangsbild">' +
+          '<span class="card-input-lbl">Ausgangsbild</span>' +
+          '</div>';
+      }
+      body.innerHTML =
+        '<div class="card-num">' + num.replace('-', '.') + '</div>' +
+        '<div class="card-name">' + name.replace(/^[\d.]+ /, '') + '</div>' +
+        '<div class="card-cat">' + cat.cat + '</div>' +
+        inputHtml;
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+}
+
+buildGallery();
+</script>
+</body>
+</html>
