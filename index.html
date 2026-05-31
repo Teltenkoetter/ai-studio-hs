@@ -521,7 +521,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <button class="lang-btn" id="btn-lang-setup" title="Switch to English" onclick="setLang(LANG==='de'?'en':'de')">EN</button>
       </div>
       <h1 style="font-size:30px;letter-spacing:-0.5px;font-weight:400;"><span style="font-weight:700;">KI</span> <span style="font-weight:300;">Studio</span></h1>
-      <p class="sub" data-i18n="login-subtitle">KI-Bildgenerierung für Innenarchitektur und Architektur</p>
+      <p class="sub" data-i18n="login-subtitle">KI-Bildgenerierung in der Lehre für Innenarchitektur und Architektur</p>
       <p class="sub" style="margin-top:3px;opacity:0.55;">Nano Banana &amp; Black Forest Labs</p>
     </div>
     <div class="setup-card">
@@ -751,7 +751,7 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
           <div class="tog-row">
             <span class="tog-text" data-i18n="meta-lbl">Aus</span>
             <label class="toggle">
-              <input type="checkbox" id="tog-meta">
+              <input type="checkbox" id="tog-meta" checked>
               <div class="tog-track"><div class="tog-thumb"></div></div>
             </label>
           </div>
@@ -861,6 +861,14 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
     </div>
     <div id="help-body-de" class="help-body">
 
+      <div class="help-sec" style="border-left:2px solid var(--accent);padding-left:14px;margin-bottom:24px;">
+        <h3 style="margin-bottom:10px;">KI im Entwurf</h3>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;">KI-Bildgenerierung ist kein Ersatz für gestalterisches Denken — sie ist eine Erweiterung davon.</p>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;margin-top:8px;">Wer weiß, wie Material sich anfühlt, wie Konstruktion wirkt und wie kulturelle, soziologische und phänomenale Erfahrungen einen Raum prägen — der kann KI als Werkzeug einsetzen.</p>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;margin-top:8px;">Wir entwerfen für die reale Welt: für Menschen in echten Räumen, mit echten Materialien, unter echtem Licht — mit Verantwortung gegenüber sozialen, ökologischen und gestalterischen Qualitäten.</p>
+        <p style="color:var(--text);line-height:1.75;font-size:12px;margin-top:8px;font-style:italic;">Das Wissen über Raum ist die Voraussetzung — nicht das Ziel.</p>
+      </div>
+
       <div class="help-sec">
         <h3>🚀 Schnellstart</h3>
         <ul>
@@ -946,6 +954,14 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
     </div>
 
     <div id="help-body-en" class="help-body" style="display:none;">
+
+      <div class="help-sec" style="border-left:2px solid var(--accent);padding-left:14px;margin-bottom:24px;">
+        <h3 style="margin-bottom:10px;">AI in Design</h3>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;">AI image generation is not a substitute for design thinking — it is an extension of it.</p>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;margin-top:8px;">Those who know how materials feel, how structure works, and how cultural, sociological and phenomenal experiences shape a space — they can use AI as a tool.</p>
+        <p style="color:var(--muted);line-height:1.75;font-size:12px;margin-top:8px;">We design for the real world: for people in real spaces, with real materials, under real light — with responsibility for social, ecological and spatial qualities.</p>
+        <p style="color:var(--text);line-height:1.75;font-size:12px;margin-top:8px;font-style:italic;">Spatial knowledge is the prerequisite — not the goal.</p>
+      </div>
 
       <div class="help-sec">
         <h3>🚀 Quick Start</h3>
@@ -1145,9 +1161,9 @@ var I18N = {
     'think-med-title':    '8192 Thinking-Tokens — kein garantierter Qualitätssprung',
     'think-high-title':   '24576 Thinking-Tokens — deutlich teurer, Effekt auf Bildqualität unsicher',
     'lbl-meta':           'Metadaten-Export',
-    'meta-lbl':           'Aus',
+    'meta-lbl':           'An',
     'meta-note':          'PNG-Download speichert auch .txt mit Prompt, Modell & Seed.',
-    'login-subtitle': 'KI-Bildgenerierung für Innenarchitektur und Architektur',
+    'login-subtitle': 'KI-Bildgenerierung in der Lehre für Innenarchitektur und Architektur',
     'tab-ws':         '🎓 Lehre',
     'tab-free':       '🆓 Kostenlos',
     'api-desc':       'Du benötigst einen eigenen <strong>Google Gemini API-Key</strong>. Dieser erfordert ein Google-Konto mit <strong>hinterlegter Kreditkarte</strong> — die Nutzung wird pro generiertem Bild abgerechnet (ca. 0,02–0,13 € je nach Modell).',
@@ -1225,9 +1241,9 @@ var I18N = {
     'think-med-title':    '8192 thinking tokens — no guaranteed quality jump',
     'think-high-title':   '24576 thinking tokens — significantly more expensive, uncertain effect on image quality',
     'lbl-meta':           'Metadata export',
-    'meta-lbl':           'Off',
+    'meta-lbl':           'On',
     'meta-note':          'PNG download also saves a .txt with prompt, model & seed.',
-    'login-subtitle': 'AI Image Generation for Interior and Architecture',
+    'login-subtitle': 'AI Image Generation in Education for Interior and Architecture',
     'tab-ws':         '🎓 Course',
     'tab-free':       '🆓 Free',
     'api-desc':       'You need your own <strong>Google Gemini API key</strong>. This requires a Google account with a <strong>credit card on file</strong> — usage is billed per generated image (approx. €0.02–0.13 depending on model).',
@@ -1362,7 +1378,7 @@ var TEMPLATES = [
     { name: '2.6 Einzelnes Element ändern',
       text: 'Take this image of a furnished room and make ONLY these specific changes: [EDIT: e.g. replace the coffee table with a modern travertine stone one / change the wall colour to deep olive green / swap the pendant light for a sculptural brass fixture / add a large-format art print above the sofa].\nDo NOT alter any other furniture, layout, lighting, colours, architecture, proportions, or camera angle.\nKeep every unchanged element exactly as it appears in the original image.' },
     { name: '2.7 Kamera & Perspektive',
-      text: 'Render this [ROOM/BUILDING: e.g. Wohnbereich / Arbeitsbereich / Fassade / Außenraum] from the following camera setup:\nPerspektive: [PERSPECTIVE: e.g. Zentralperspektive (Fluchtpunkt mittig) / Übereck-Perspektive (zwei Fluchtpunkte) / Vogelperspektive (bird\'s eye) / Froschperspektive (worm\'s eye) / nicht geneigte Bildebene (parallele Projektion ohne Fluchtpunkte)].\nBrennweite: [FOCAL LENGTH: e.g. Weitwinkel 24mm / 28mm / Standard 35mm / Normalobjektiv 50mm / Leichtes Tele 85mm].\nKamerahöhe: [HEIGHT: e.g. Augenhöhe 1.60m / Niedrig 0.50m / Erhöht 2.50m].\nNeigung: [TILT: e.g. keine Neigung — Bildebene senkrecht / leicht nach oben geneigt / leicht nach unten].\nDo not change anything about the architecture, materials, or spatial layout — only camera position and lens.\nArchitectural photography, vertical lines perfectly straight, professional quality.' },
+      text: 'Render this [ROOM/BUILDING: e.g. Wohnbereich / Arbeitsbereich / Fassade / Außenraum] from the following camera setup:\nPerspektive: [PERSPECTIVE: e.g. Zentralperspektive (Fluchtpunkt mittig) / Übereck-Perspektive (zwei Fluchtpunkte) / Vogelperspektive (bird\'s eye) / Froschperspektive (worm\'s eye) / nicht geneigte Bildebene (parallele Projektion ohne Fluchtpunkte)].\nBrennweite: [FOCAL LENGTH: e.g. Weitwinkel 24mm / 28mm / Standard 35mm / Normalobjektiv 50mm / Leichtes Tele 85mm].\nBlende / Schärfentiefe: [DEPTH OF FIELD: e.g. f/1.8 — sehr geringe Schärfentiefe, Hintergrund stark unscharf / f/5.6 — mittlere Schärfentiefe / f/11 — alles scharf, dokumentarisch / f/16 — maximale Schärfe, klassische Architekturfotografie].\nSchärfepunkt: [FOCUS POINT: e.g. Vordergrund / Mittelpunkt des Raumes / Hinterwand / Materialtextur im Nahbereich].\nKamerahöhe: [HEIGHT: e.g. Augenhöhe 1.60m / Niedrig 0.50m / Erhöht 2.50m].\nNeigung: [TILT: e.g. keine Neigung — Bildebene senkrecht / leicht nach oben geneigt / leicht nach unten].\nDo not change anything about the architecture, materials, or spatial layout — only camera position and lens.\nArchitectural photography, vertical lines perfectly straight, professional quality.' },
     { name: '2.8 Ausstellungsstand / Showroom',
       text: 'Create a photorealistic image of a [USE TYPE: e.g. trade show booth / brand showroom / retail space] for [BRAND / THEME: e.g. a furniture brand / architecture office / tech company].\nStyle: [STYLE: e.g. Scandinavian minimalist / raw industrial / high-end luxury].\nPrimary materials and colours: [MATERIALS & COLOURS: e.g. blackened steel, light oak, matte white surfaces, brand colour accents].\nKey spatial elements: [SPATIAL ELEMENTS: e.g. open display tables, a central enclosed meeting room with glass walls, integrated ceiling lighting].\nSetting: [SETTING: e.g. dark trade show hall with polished concrete floor / bright white gallery space].\nInclude [PEOPLE: e.g. visitors and staff naturally interacting / no people].' },
     { name: '2.9 Licht & Stimmung wechseln',
@@ -1520,7 +1536,7 @@ var S = {
   lbUrl: '', lbPrompt: '', lbModel: '', lbTemplate: '', lbSysCtx: '',
   inputImages: [],
   sysCtx: 'off', personGen: false,
-  lastTemplate: '', exportMeta: false
+  lastTemplate: '', exportMeta: true
 };
 
 /* ── HELPERS ── */
