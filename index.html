@@ -647,9 +647,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="pgrp" id="grp-sysctx">
           <div class="pgrp-lbl" data-i18n="lbl-sysctx">System-Kontext</div>
           <div class="seg" id="seg-sysctx">
-            <button class="seg-btn on" data-v="off" data-i18n="btn-off" title="Kein System-Kontext — volle Freiheit, kein Hintergrundprompt">Aus</button>
-            <button class="seg-btn" data-v="expert" title="Photorealistisch · geometrisch präzise · professionelle Architekturbeleuchtung und -komposition">Expert</button>
-            <button class="seg-btn" data-v="grey" data-i18n="btn-grey" title="Ausschließlich Schwarz-Weiß · starke Kontraste · keine Farbe — MemoFix-Stil">Graustufen</button>
+            <button class="seg-btn on" data-v="off" data-i18n="btn-off" data-i18n-title="sysctx-off-title" title="Kein System-Kontext — volle Freiheit, kein Hintergrundprompt">Aus</button>
+            <button class="seg-btn" data-v="expert" data-i18n-title="sysctx-expert-title" title="Photorealistisch · geometrisch präzise · professionelle Architekturbeleuchtung">Expert</button>
+            <button class="seg-btn" data-v="grey" data-i18n="btn-grey" data-i18n-title="sysctx-grey-title" title="Ausschließlich Schwarz-Weiß · starke Kontraste · keine Farbe">Graustufen</button>
           </div>
           <p class="param-note" id="sysctx-note" style="margin-top:5px;"></p>
         </div>
@@ -679,8 +679,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
 
         <div class="pgrp" id="grp-upscale-tip" style="display:none;">
           <div style="background:var(--acc-bg);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-sm);padding:9px 11px;">
-            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">💡 Höhere Auflösung</div>
-            <div class="param-note" style="color:var(--muted);">Imagen Fast gibt ~1024 px aus. Für Druckqualität: PNG in Photoshop öffnen → <strong style="color:var(--text);">Bearbeiten → Generative Upscale</strong> (Adobe Firefly) → bis 4× ohne Qualitätsverlust.</div>
+            <div data-i18n="upscale-title" style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">💡 Höhere Auflösung</div>
+            <div data-i18n="upscale-text" class="param-note" style="color:var(--muted);">Imagen Fast gibt ~1024 px aus. Für Druckqualität: PNG in Photoshop öffnen → Bearbeiten → Generative Upscale (Adobe Firefly) → bis 4× ohne Qualitätsverlust.</div>
           </div>
         </div>
 
@@ -699,26 +699,26 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="pgrp" id="grp-think">
           <div class="pgrp-lbl" id="lbl-thinking"><span data-i18n="lbl-thinking">Thinking-Level</span> <span id="thinking-note" data-i18n="thinking-note" style="color:var(--dim);font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— langsamer &amp; teurer, Effekt bei Bildern begrenzt</span></div>
           <div class="seg" id="seg-think">
-            <button class="seg-btn on" data-v="0" data-i18n="btn-off" title="Kein Thinking — schnell und günstig">Aus</button>
-            <button class="seg-btn" data-v="1024" data-i18n="btn-low" title="1024 Thinking-Tokens — minimaler Effekt, kaum spürbar">Niedrig</button>
-            <button class="seg-btn" data-v="8192" data-i18n="btn-med" title="8192 Thinking-Tokens — etwas mehr Aufwand bei der Prompt-Interpretation, kein garantierter Qualitätssprung">Mittel</button>
-            <button class="seg-btn" data-v="24576" data-i18n="btn-high" title="24576 Thinking-Tokens — deutlich teurer, Effekt auf Bildqualität unsicher">Hoch</button>
+            <button class="seg-btn on" data-v="0" data-i18n="btn-off" data-i18n-title="think-off-title" title="Kein Thinking — schnell und günstig">Aus</button>
+            <button class="seg-btn" data-v="1024" data-i18n="btn-low" data-i18n-title="think-low-title" title="1024 Thinking-Tokens — minimaler Effekt, kaum spürbar">Niedrig</button>
+            <button class="seg-btn" data-v="8192" data-i18n="btn-med" data-i18n-title="think-med-title" title="8192 Thinking-Tokens — kein garantierter Qualitätssprung">Mittel</button>
+            <button class="seg-btn" data-v="24576" data-i18n="btn-high" data-i18n-title="think-high-title" title="24576 Thinking-Tokens — deutlich teurer, Effekt unsicher">Hoch</button>
           </div>
         </div>
 
         <!-- 7. Seed -->
         <div class="pgrp pgrp-seed">
-          <div class="pgrp-lbl">Seed <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— für alle Modelle</span></div>
+          <div class="pgrp-lbl">Seed <span data-i18n="seed-note" style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— für alle Modelle</span></div>
           <div class="seed-row">
-            <input class="ctrl-num" type="number" id="seed-input" placeholder="Leer = zufällig">
-            <button class="btn btn-secondary btn-icon" id="btn-dice" title="Zufalls-Seed generieren">🎲</button>
+            <input class="ctrl-num" type="number" id="seed-input" data-i18n-placeholder="seed-placeholder" placeholder="Leer = zufällig">
+            <button class="btn btn-secondary btn-icon" id="btn-dice" data-i18n-title="btn-dice-title" title="Zufalls-Seed generieren">🎲</button>
           </div>
         </div>
 
         <!-- 8. Negativer Prompt -->
         <div class="pgrp" id="grp-neg">
           <div class="pgrp-lbl" data-i18n="lbl-neg">Negativer Prompt</div>
-          <textarea class="ctrl-ta" id="neg-prompt" rows="2" placeholder="Was soll nicht im Bild erscheinen…"></textarea>
+          <textarea class="ctrl-ta" id="neg-prompt" rows="2" data-i18n-placeholder="neg-placeholder" placeholder="Was soll nicht im Bild erscheinen…"></textarea>
         </div>
 
         <!-- 9. Sicherheitsfilter -->
@@ -751,8 +751,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
       <div class="prompt-zone">
         <div class="prompt-box" id="prompt-box">
           <div id="prompt-hl" class="prompt-hl"></div>
-          <textarea id="prompt" placeholder="Prompt eingeben — beschreibe das Bild, das generiert werden soll…" maxlength="800"></textarea>
-          <button class="prompt-clear" id="btn-prompt-clear" title="Prompt leeren">✕</button>
+          <textarea id="prompt" data-i18n-placeholder="prompt-placeholder" placeholder="Prompt eingeben — beschreibe das Bild, das generiert werden soll…" maxlength="800"></textarea>
+          <button class="prompt-clear" id="btn-prompt-clear" data-i18n-title="btn-prompt-clear-title" title="Prompt leeren">✕</button>
           <span class="cc" id="char-count">0 / 800</span>
         </div>
 
@@ -762,15 +762,13 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
           <button class="btn btn-ghost" id="btn-clear-imgs" style="padding:3px 8px;font-size:11px;">Alle ✕</button>
         </div>
 
-        <div class="upload-warn" id="upload-warn" style="display:none;">
-          ⚠️ Imagen-Modelle unterstützen keine Bild-Eingabe — bitte wechsle zu einem Gemini-Modell.
-        </div>
+        <div class="upload-warn" id="upload-warn" data-i18n="upload-warn" style="display:none;">⚠️ Imagen-Modelle unterstützen keine Bild-Eingabe — bitte wechsle zu einem Gemini-Modell.</div>
         <div id="ctx-badge" style="display:none;font-size:11px;padding:5px 10px;border-radius:var(--r-sm);margin-bottom:8px;line-height:1.4;"></div>
 
         <div class="mode-row" id="mode-row" style="display:none;">
           <div class="seg" id="seg-mode">
-            <button class="seg-btn on" data-v="new" data-i18n="seg-new" title="Jeder Prompt startet frisch — kein Kontext aus vorherigen Generierungen">✦ Neue Serie</button>
-            <button class="seg-btn" data-v="continue" data-i18n="seg-continue" title="Gemini erinnert sich an vorherige Prompts (Textkontext) — aber NICHT an das letzte Bild. Für visuelle Iteration: Bild über '📎 Als Eingabe' hinzufügen.">↺ Textkontext</button>
+            <button class="seg-btn on" data-v="new" data-i18n="seg-new" data-i18n-title="seg-new-title" title="Jeder Prompt startet frisch — kein Kontext aus vorherigen Generierungen">✦ Neue Serie</button>
+            <button class="seg-btn" data-v="continue" data-i18n="seg-continue" data-i18n-title="seg-continue-title" title="Gemini erinnert sich an vorherige Prompts (Textkontext) — aber NICHT an das letzte Bild.">↺ Textkontext</button>
           </div>
           <span class="chat-depth" id="chat-depth" style="display:none;"></span>
         </div>
@@ -779,9 +777,9 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <div class="gen-row-wrap">
           <div class="tmpl-panel" id="tmpl-panel" style="display:none;"></div>
           <div class="gen-row">
-            <button class="btn btn-secondary" id="btn-upload" data-i18n="btn-upload" title="Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)">📎 Bilder</button>
-            <button class="btn btn-secondary" id="btn-tmpl" data-i18n="btn-tmpl" title="Prompt-Vorlagen aus dem NanoBanana Cheatsheet — Tab springt zum nächsten Platzhalter">📋 Vorlagen</button>
-            <button class="btn btn-secondary" id="btn-improve" title="Prompt mit KI automatisch verbessern und ausformulieren (Gemini)">✨</button>
+            <button class="btn btn-secondary" id="btn-upload" data-i18n="btn-upload" data-i18n-title="btn-upload-title" title="Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)">📎 Bilder</button>
+            <button class="btn btn-secondary" id="btn-tmpl" data-i18n="btn-tmpl" data-i18n-title="btn-tmpl-title" title="Prompt-Vorlagen — Tab springt zum nächsten Platzhalter">📋 Vorlagen</button>
+            <button class="btn btn-secondary" id="btn-improve" data-i18n-title="btn-improve-title" title="Prompt mit KI automatisch verbessern und ausformulieren (Gemini)">✨</button>
             <button class="btn btn-primary" id="btn-gen" data-i18n="btn-gen" title="Bild generieren (Strg+Enter)">⚡ Generieren</button>
             <div style="flex:1"></div>
             <button class="btn btn-ghost btn-sm" id="btn-clear" data-i18n="btn-clear" style="display:none;">Ergebnisse leeren</button>
@@ -851,7 +849,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Schnellstart</h3>
         <ul>
           <li><strong>Prompt eingeben</strong> — Beschreibe dein Bild. Englisch für Stilbegriffe empfohlen, Deutsch funktioniert auch.</li>
-          <li><strong>📋 Vorlagen</strong> — 44 Prompts in 7 Kategorien. Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
+          <li><strong>📋 Vorlagen</strong> — 50 Prompts in 8 Kategorien (1 Architektur bis 8 Fotografischer Stil). Klicken → einfügen → <strong>Tab</strong> springt zum nächsten [Platzhalter]</li>
+          <li><strong>↗ Promptgalerie</strong> — Beispielbilder zu ausgewählten Vorlagen (im Vorlagen-Panel)</li>
           <li><strong>✨</strong> — Prompt automatisch mit KI verbessern und ausformulieren</li>
           <li><strong>✕</strong> — Prompt-Feld leeren</li>
           <li><strong>⚡ Generieren</strong> klicken oder <strong>Strg+Enter</strong></li>
@@ -862,23 +861,22 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
       <div class="help-sec">
         <h3>🤖 Modelle &amp; Kosten</h3>
         <ul>
-          <li><strong>Gemini 2.5 Flash</strong> — ~0,04 €/Bild · nimmt Bilder als Eingabe · Chat-Modus „Aufbauen" · Bild + Text als Ausgabe</li>
+          <li><strong>Gemini 3.1 Flash</strong> — ~0,05 €/Bild · Standard-Modell · nimmt Bilder als Eingabe · beste Stilkontrolle</li>
           <li><strong>Gemini 3 Pro</strong> — ~0,13 €/Bild · höchste Qualität · langsamer</li>
           <li><strong>Imagen 4 Fast</strong> — ~0,02 €/Bild · schnell · bis 4 Bilder gleichzeitig · nur Text → Bild</li>
           <li><strong>Imagen 4 Standard / Ultra</strong> — ~0,04–0,06 € · höhere Qualität · 2K wählbar</li>
-          <li>Imagen akzeptiert <em>keine</em> Bild-Eingabe — ausschließlich Text → Bild</li>
+          <li><strong>FLUX (kostenlos)</strong> — Black Forest Labs 🇩🇪 · kein API-Key nötig · nur Text → Bild</li>
+          <li>Imagen und FLUX akzeptieren <em>keine</em> Bild-Eingabe</li>
         </ul>
       </div>
 
       <div class="help-sec">
         <h3>⚙️ Parameter erklärt</h3>
         <ul>
-          <li><strong>Ausgabe: Bild &amp; Text</strong> — Gemini liefert das Bild + einen kurzen Kommentar zur Interpretation. Hilfreich für Feedback.</li>
-          <li><strong>Ausgabe: Nur Bilder</strong> — nur das Bild, kein Text. Schneller, kompakter.</li>
-          <li><strong>Temperatur 0–2</strong> — 0 = präzise &amp; deterministisch · 1 = ausgewogen (Standard) · 2 = maximal kreativ &amp; zufällig</li>
-          <li><strong>Thinking-Level</strong> — lässt Gemini länger über den Prompt nachdenken. Effekt auf Bildqualität ist begrenzt; langsamer und teurer. PIN-geschützt für Kurs-Logins.</li>
           <li><strong>System-Kontext</strong> — unsichtbarer Hintergrundprompt: „Aus" = freie Hand · „Expert" = photorealistisch, geometrisch präzise · „Graustufen" = Schwarz-Weiß</li>
-          <li><strong>Auflösung</strong> — Gemini: aktuell nur <strong>1K</strong> (~1024 px); 2K/4K in Vorbereitung. Imagen Standard/Ultra: 1K oder <strong>2K</strong> wählbar. Imagen Fast: immer 1K.</li>
+          <li><strong>Thinking-Level</strong> — lässt Gemini länger über den Prompt nachdenken. Effekt auf Bildqualität ist begrenzt; langsamer und teurer. PIN-geschützt für Kurs-Logins.</li>
+          <li><strong>Auflösung</strong> — Gemini: aktuell nur <strong>1K</strong> (~1024 px). Imagen Standard/Ultra: 1K oder <strong>2K</strong> wählbar. Imagen Fast: immer 1K.</li>
+          <li><strong>Seed</strong> — Zufallszahl, die das Ergebnis reproduzierbar macht. Leer = zufällig. Bei gleichem Prompt + Seed sehr ähnliches Ergebnis.</li>
         </ul>
       </div>
 
@@ -937,7 +935,8 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
         <h3>🚀 Quick Start</h3>
         <ul>
           <li><strong>Enter a prompt</strong> — Describe your image. English recommended for style terms, German works too.</li>
-          <li><strong>📋 Templates</strong> — 44 prompts in 7 categories. Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
+          <li><strong>📋 Templates</strong> — 50 prompts in 8 categories (1 Architecture to 8 Photographic Style). Click → insert → <strong>Tab</strong> jumps to next [placeholder]</li>
+          <li><strong>↗ Prompt Gallery</strong> — Example images for selected templates (in the templates panel)</li>
           <li><strong>✨</strong> — Auto-improve and expand the prompt using AI</li>
           <li><strong>✕</strong> — Clear the prompt field</li>
           <li>Click <strong>⚡ Generate</strong> or press <strong>Ctrl+Enter</strong></li>
@@ -948,23 +947,22 @@ textarea, input, .img-prompt, .error-msg { user-select: text; }
       <div class="help-sec">
         <h3>🤖 Models &amp; Costs</h3>
         <ul>
-          <li><strong>Gemini 2.5 Flash</strong> — ~€0.04/image · accepts image input · chat mode "Build on" · Image + Text output</li>
+          <li><strong>Gemini 3.1 Flash</strong> — ~€0.05/image · default model · accepts image input · best style control</li>
           <li><strong>Gemini 3 Pro</strong> — ~€0.13/image · highest quality · slower</li>
           <li><strong>Imagen 4 Fast</strong> — ~€0.02/image · fast · up to 4 images at once · text to image only</li>
           <li><strong>Imagen 4 Standard / Ultra</strong> — ~€0.04–0.06 · higher quality · 2K available</li>
-          <li>Imagen does <em>not</em> accept image input — text to image only</li>
+          <li><strong>FLUX (free)</strong> — Black Forest Labs 🇩🇪 · no API key needed · text to image only</li>
+          <li>Imagen and FLUX do <em>not</em> accept image input</li>
         </ul>
       </div>
 
       <div class="help-sec">
         <h3>⚙️ Parameters explained</h3>
         <ul>
-          <li><strong>Output: Image &amp; Text</strong> — Gemini returns the image + a short comment. Useful for feedback and explanations.</li>
-          <li><strong>Output: Image only</strong> — just the image, no text. Faster, less distraction.</li>
-          <li><strong>Temperature 0–2</strong> — 0 = precise &amp; deterministic · 1 = balanced (default) · 2 = maximally creative &amp; random</li>
-          <li><strong>Thinking Level</strong> — lets Gemini think longer about the prompt. Effect on image quality is limited; slower and more expensive. PIN-protected for course logins.</li>
           <li><strong>System Context</strong> — invisible background prompt: "Off" = free rein · "Expert" = photorealistic, geometrically precise · "Grayscale" = black &amp; white only</li>
-          <li><strong>Resolution</strong> — Gemini: currently only <strong>1K</strong> (~1024 px); 2K/4K coming soon. Imagen Standard/Ultra: 1K or <strong>2K</strong>. Imagen Fast: always 1K.</li>
+          <li><strong>Thinking Level</strong> — lets Gemini think longer about the prompt. Effect on image quality is limited; slower and more expensive. PIN-protected for course logins.</li>
+          <li><strong>Resolution</strong> — Gemini: currently only <strong>1K</strong> (~1024 px). Imagen Standard/Ultra: 1K or <strong>2K</strong>. Imagen Fast: always 1K.</li>
+          <li><strong>Seed</strong> — number that makes results reproducible. Empty = random. Same prompt + seed = very similar result.</li>
         </ul>
       </div>
 
@@ -1099,7 +1097,28 @@ var I18N = {
     'empty-line2':        'Prompt eingeben und auf Generieren klicken',
     'history-sep':        '📚 Verlauf',
     'loading-lbl':        'Wird generiert…',
-    'loading-sub-sfx':    ' · ~10–30 Sekunden'
+    'loading-sub-sfx':    ' · ~10–30 Sekunden',
+    'prompt-placeholder': 'Prompt eingeben — beschreibe das Bild, das generiert werden soll…',
+    'neg-placeholder':    'Was soll nicht im Bild erscheinen…',
+    'seed-note':          '— für alle Modelle',
+    'seed-placeholder':   'Leer = zufällig',
+    'btn-dice-title':     'Zufalls-Seed generieren',
+    'upscale-title':      '💡 Höhere Auflösung',
+    'upscale-text':       'Imagen Fast gibt ~1024 px aus. Für Druckqualität: PNG in Photoshop öffnen → Bearbeiten → Generative Upscale (Adobe Firefly) → bis 4× ohne Qualitätsverlust.',
+    'upload-warn':        '⚠️ Imagen-Modelle unterstützen keine Bild-Eingabe — bitte wechsle zu einem Gemini-Modell.',
+    'btn-improve-title':  'Prompt mit KI automatisch verbessern und ausformulieren (Gemini)',
+    'btn-prompt-clear-title': 'Prompt leeren',
+    'seg-new-title':      'Jeder Prompt startet frisch — kein Kontext aus vorherigen Generierungen',
+    'seg-continue-title': 'Gemini erinnert sich an vorherige Prompts — aber NICHT an das letzte Bild',
+    'btn-upload-title':   'Bilder als Eingabe laden — max. 5 (oder auf Textarea ziehen)',
+    'btn-tmpl-title':     'Prompt-Vorlagen — Tab springt zum nächsten Platzhalter',
+    'sysctx-off-title':   'Kein System-Kontext — volle Freiheit, kein Hintergrundprompt',
+    'sysctx-expert-title':'Photorealistisch · geometrisch präzise · professionelle Architekturbeleuchtung',
+    'sysctx-grey-title':  'Ausschließlich Schwarz-Weiß · starke Kontraste · keine Farbe',
+    'think-off-title':    'Kein Thinking — schnell und günstig',
+    'think-low-title':    '1024 Thinking-Tokens — minimaler Effekt, kaum spürbar',
+    'think-med-title':    '8192 Thinking-Tokens — kein garantierter Qualitätssprung',
+    'think-high-title':   '24576 Thinking-Tokens — deutlich teurer, Effekt auf Bildqualität unsicher'
   },
   en: {
     'lbl-model':          'Model',
@@ -1132,7 +1151,28 @@ var I18N = {
     'empty-line2':        'Enter a prompt and click Generate',
     'history-sep':        '📚 History',
     'loading-lbl':        'Generating…',
-    'loading-sub-sfx':    ' · ~10–30 seconds'
+    'loading-sub-sfx':    ' · ~10–30 seconds',
+    'prompt-placeholder': 'Enter a prompt — describe the image you want to generate…',
+    'neg-placeholder':    'What should not appear in the image…',
+    'seed-note':          '— for all models',
+    'seed-placeholder':   'Empty = random',
+    'btn-dice-title':     'Generate random seed',
+    'upscale-title':      '💡 Higher resolution',
+    'upscale-text':       'Imagen Fast outputs ~1024 px. For print quality: open PNG in Photoshop → Edit → Generative Upscale (Adobe Firefly) → up to 4× without visible quality loss.',
+    'upload-warn':        '⚠️ Imagen models do not support image input — please switch to a Gemini model.',
+    'btn-improve-title':  'Auto-improve and expand the prompt using AI (Gemini)',
+    'btn-prompt-clear-title': 'Clear prompt',
+    'seg-new-title':      'Each prompt starts fresh — no context from previous generations',
+    'seg-continue-title': 'Gemini remembers previous prompts — but NOT the last image',
+    'btn-upload-title':   'Load images as input — max. 5 (or drag onto the text field)',
+    'btn-tmpl-title':     'Prompt Templates — Tab jumps to next placeholder',
+    'sysctx-off-title':   'No system context — full creative freedom',
+    'sysctx-expert-title':'Photorealistic · geometrically precise · professional architectural lighting',
+    'sysctx-grey-title':  'Black & white only · strong contrast · no colour',
+    'think-off-title':    'No thinking — fast and affordable',
+    'think-low-title':    '1024 thinking tokens — minimal effect, barely noticeable',
+    'think-med-title':    '8192 thinking tokens — no guaranteed quality jump',
+    'think-high-title':   '24576 thinking tokens — significantly more expensive, uncertain effect on image quality'
   }
 };
 
@@ -1154,6 +1194,23 @@ function setLang(l) {
     var val = t(el.getAttribute('data-i18n'));
     if (val !== undefined) el.textContent = val;
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var val = t(el.getAttribute('data-i18n-placeholder'));
+    if (val !== undefined) el.placeholder = val;
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+    var val = t(el.getAttribute('data-i18n-title'));
+    if (val !== undefined) el.title = val;
+  });
+  /* Template panel: re-render category buttons and items with correct language */
+  if (q('#tmpl-cats')) {
+    q('#tmpl-cats').querySelectorAll('.tmpl-cat-btn').forEach(function(btn, i) {
+      var cat = TEMPLATES[i];
+      btn.textContent = (LANG === 'en' && TEMPLATE_CATS_EN[cat.cat]) ? TEMPLATE_CATS_EN[cat.cat] : cat.cat;
+    });
+    var activeBtn = q('#tmpl-cats .tmpl-cat-btn.on');
+    if (activeBtn) renderTmplItems(parseInt(activeBtn.dataset.i));
+  }
   /* Help modal language toggle */
   var hde = q('#help-body-de'), hen = q('#help-body-en'), ht = q('#help-title');
   if (hde) hde.style.display = l === 'de' ? '' : 'none';
@@ -1299,6 +1356,70 @@ var TEMPLATES = [
       text: 'Render this [SUBJECT: e.g. Innenraum / Architektur Außenansicht / Raumdetail] with the aesthetic of a professional architecture magazine.\nPublikationsstil: [STYLE: e.g. Wallpaper* — clean, minimal, zeitgenössisch / Architectural Digest — luxuriös, warm / Frame Magazine — konzeptuell, grafisch / Dezeen — editoriell, dokumentarisch].\nFarbstimmung: [GRADE: e.g. clean und neutral / warm und einladend / kühl und präzise / dramatisch und stimmungsvoll].\nLicht: [LIGHTING: e.g. natürliches Tageslicht, weich und diffus / gemischtes Natur- und Kunstlicht / dramatisch gerichtet].\nPersonen: [PEOPLE: e.g. keine Personen / einzelne Person, unscharf im Hintergrund / authentisch integrierte Figuren].\nHigh resolution, professional architectural photography quality.' }
   ]}
 ];
+
+/* ── TEMPLATE NAME TRANSLATIONS ── */
+var TEMPLATE_CATS_EN = {
+  '1 Architektur & Landschaft': '1 Architecture & Landscape',
+  '2 Innenarchitektur':         '2 Interior Architecture',
+  '3 Objekt im Raum':           '3 Object in Space',
+  '4 Personen':                 '4 People',
+  '5 Stimmung & Stil':          '5 Mood & Style',
+  '6 Optimierung':              '6 Optimisation',
+  '7 Details & Collage':        '7 Details & Collage',
+  '8 Fotografischer Stil':      '8 Photographic Style'
+};
+var TEMPLATE_NAMES_EN = {
+  '1.1 Architektur aus Skizze / Konzept':          '1.1 Architecture from Sketch / Concept',
+  '1.2 Fassade überarbeiten':                       '1.2 Rework Facade',
+  '1.3 Außenraum / Landschaft gestalten':           '1.3 Design Outdoor Space / Landscape',
+  '1.4 Anderen Winkel / Blickrichtung':             '1.4 Different Angle / Viewpoint',
+  '1.5 Weißmodell → Render':                        '1.5 White Model → Render',
+  '1.6 Farbkodiertes Modell → Materialzuweisung':  '1.6 Colour-Coded Model → Material Assignment',
+  '1.7 Screenshot / 3D-Modell → Render':           '1.7 Screenshot / 3D Model → Render',
+  '1.8 Rohbauphase / Reverse Engineering':          '1.8 Shell Construction / Reverse Engineering',
+  '1.9 Jahreszeit & Wetter wechseln':               '1.9 Change Season & Weather',
+  '1.10 Grundriss / Lageplan → Render':             '1.10 Floor Plan / Site Plan → Render',
+  '2.1 Leeren Raum einrichten':                     '2.1 Furnish Empty Space',
+  '2.2 Weißmodell → Render':                        '2.2 White Model → Render',
+  '2.3 Farbkodiertes Modell → Materialzuweisung':  '2.3 Colour-Coded Model → Material Assignment',
+  '2.4 Materialien & Oberflächen tauschen':         '2.4 Swap Materials & Surfaces',
+  '2.5 Möblierung ersetzen':                        '2.5 Replace Furniture',
+  '2.6 Einzelnes Element ändern':                   '2.6 Change Single Element',
+  '2.7 Kamera & Perspektive':                       '2.7 Camera & Perspective',
+  '2.8 Ausstellungsstand / Showroom':               '2.8 Exhibition Stand / Showroom',
+  '2.9 Licht & Stimmung wechseln':                  '2.9 Change Light & Atmosphere',
+  '3.1 3D-Objekt in beschriebene Szene':            '3.1 3D Object into Described Scene',
+  '3.2 3D-Objekt in hochgeladenes Bild setzen':     '3.2 3D Object into Uploaded Image',
+  '3.3 Materialzuweisung auf 3D-Objekt':            '3.3 Material Assignment on 3D Object',
+  '3.4 Produktvisualisierung / Studio-Shot':        '3.4 Product Visualisation / Studio Shot',
+  '4.1 Weißer Cutout aus Foto':                     '4.1 White Cutout from Photo',
+  '4.2 Maßstabsfigur generieren':                   '4.2 Generate Scale Figure',
+  '4.3 Silhouette / Schattenriss':                  '4.3 Silhouette / Shadow Outline',
+  '4.4 Personen in Raum integrieren':               '4.4 Integrate People into Space',
+  '4.5 Personengruppe im Raum':                     '4.5 Group of People in Space',
+  '4.6 Person im Kontext':                          '4.6 Person in Context',
+  '4.7 Porträt aufwerten':                          '4.7 Enhance Portrait',
+  '4.8 Hintergrund entfernen / ersetzen':           '4.8 Remove / Replace Background',
+  '4.9 Person als Architektur-Skizze':              '4.9 Person as Architectural Sketch',
+  '5.1 Gestaltungsstil übertragen':                 '5.1 Transfer Design Style',
+  '5.2 Mood Board':                                 '5.2 Mood Board',
+  '5.3 Linienzeichnung / Line Drawing':             '5.3 Line Drawing',
+  '5.4 Bleistiftskizze / Pencil Sketch':            '5.4 Pencil Sketch',
+  '5.5 Aquarellrender / Watercolour Render':        '5.5 Watercolour Render',
+  '5.6 Axonometrie / Isometrie':                    '5.6 Axonometry / Isometric',
+  '6.1 Raum freilegen':                             '6.1 Expose the Space',
+  '6.2 Render-Qualität verbessern — Architektur':   '6.2 Improve Render Quality — Architecture',
+  '6.3 Render-Qualität verbessern — Interieur':     '6.3 Improve Render Quality — Interior',
+  '6.4 Render-Qualität verbessern — Objekt / Produkt': '6.4 Improve Render Quality — Object / Product',
+  '7.1 Entourage hinzufügen (Personen, Pflanzen, Fahrzeuge)': '7.1 Add Entourage (People, Plants, Vehicles)',
+  '7.2 Entourage einkomponieren — 2 Bilder (Compositing)':    '7.2 Composite Entourage — 2 Images',
+  '7.3 Cutout für Architekturcollage':              '7.3 Cutout for Architectural Collage',
+  '7.4 Materialcollage erstellen':                  '7.4 Create Material Collage',
+  '8.1 Analogfilm-Ästhetik':                        '8.1 Analogue Film Aesthetic',
+  '8.2 Großformat-Architekturfotografie':           '8.2 Large-Format Architectural Photography',
+  '8.3 Schwarz-Weiß Dokumentation':                 '8.3 Black & White Documentation',
+  '8.4 Editoriale Bildsprache':                     '8.4 Editorial Visual Language'
+};
 
 /* ── STATE ── */
 var S = {
@@ -2260,7 +2381,8 @@ function closeLightbox() { q('#lightbox').classList.remove('show'); }
 function initTemplates() {
   var panel = q('#tmpl-panel');
   var catsHtml = TEMPLATES.map(function(cat, i) {
-    return '<button class="tmpl-cat-btn' + (i === 0 ? ' on' : '') + '" data-i="' + i + '">' + esc(cat.cat) + '</button>';
+    var label = (LANG === 'en' && TEMPLATE_CATS_EN[cat.cat]) ? TEMPLATE_CATS_EN[cat.cat] : cat.cat;
+    return '<button class="tmpl-cat-btn' + (i === 0 ? ' on' : '') + '" data-i="' + i + '">' + esc(label) + '</button>';
   }).join('');
   panel.innerHTML =
     '<div class="tmpl-head">' +
@@ -2304,12 +2426,13 @@ function initTemplates() {
 function renderTmplItems(catIdx) {
   var list = q('#tmpl-list');
   list.innerHTML = TEMPLATES[catIdx].items.map(function(item, idx) {
+    var displayName = (LANG === 'en' && TEMPLATE_NAMES_EN[item.name]) ? TEMPLATE_NAMES_EN[item.name] : item.name;
     var prev = item.text.replace(/\[[^\]]+\]/g, function(m) {
       var label = m.slice(1, m.indexOf(':') > 0 ? m.indexOf(':') : m.length - 1);
       return '[' + label.trim() + ']';
     });
     return '<div class="tmpl-item" data-cat="' + catIdx + '" data-idx="' + idx + '">' +
-      '<div class="tmpl-item-name">' + esc(item.name) + '</div>' +
+      '<div class="tmpl-item-name">' + esc(displayName) + '</div>' +
       '<div class="tmpl-item-prev">' + esc(prev.slice(0, 80) + (prev.length > 80 ? '…' : '')) + '</div>' +
       '</div>';
   }).join('');
@@ -2331,8 +2454,8 @@ function downloadTemplatesPDF() {
       '@media print{body{padding:20px 28px;}h2{margin-top:18px;}}' +
     '</style></head><body>';
   html += '<h1><b>KI</b> studio</h1>' +
-    '<p style="font-size:10px;font-weight:300;color:#999;margin:2px 0 4px;letter-spacing:0.2px;">Prof. Klaus Teltenkötter &thinsp;|&thinsp; Digitales Entwerfen &amp; Digitale Fertigung &thinsp;|&thinsp; Innenarchitektur &thinsp;|&thinsp; Hochschule Mainz</p>' +
-    '<p class="sub">Prompt-Vorlagen · ' + TEMPLATES.reduce(function(a,c){return a+c.items.length;},0) + ' Vorlagen in ' + TEMPLATES.length + ' Kategorien</p>';
+    '<p style="font-size:13px;font-weight:500;color:#333;margin:5px 0 4px;letter-spacing:-0.1px;">Prompt-Vorlagen &mdash; ' + TEMPLATES.reduce(function(a,c){return a+c.items.length;},0) + ' Vorlagen in ' + TEMPLATES.length + ' Kategorien</p>' +
+    '<p style="font-size:10px;font-weight:300;color:#999;margin:0 0 6px;letter-spacing:0.2px;">Prof. Klaus Teltenkötter &thinsp;|&thinsp; Digitales Entwerfen &amp; Digitale Fertigung &thinsp;|&thinsp; Innenarchitektur &thinsp;|&thinsp; Hochschule Mainz</p>';
   TEMPLATES.forEach(function(cat) {
     html += '<h2>' + cat.cat + '</h2>';
     cat.items.forEach(function(item) {
